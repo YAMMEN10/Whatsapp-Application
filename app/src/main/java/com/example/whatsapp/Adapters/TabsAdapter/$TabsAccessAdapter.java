@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.whatsapp.MainFragments.ChatsFragment;
-import com.example.whatsapp.MainFragments.ContactsFragment;
-import com.example.whatsapp.MainFragments.GroupsFragment;
+import com.example.whatsapp.Fragments.MainFragments.ChatsFragment;
+import com.example.whatsapp.Fragments.MainFragments.ContactsFragment;
+import com.example.whatsapp.Fragments.MainFragments.GroupsFragment;
 
 public class $TabsAccessAdapter extends FragmentPagerAdapter {
     private Fragment main_page_fragment[];
