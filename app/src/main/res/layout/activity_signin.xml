@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Activities.SignupActivity.SignupActivity">
 
     <LinearLayout
-        android:id="@+id/signup_main_layout"
+        android:id="@+id/signin_main_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/signup_content_layout"
+            android:id="@+id/signin_content_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -55,7 +57,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/signup_email"
+                    android:id="@+id/signin_email"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:layout_margin="20dp"
@@ -69,7 +71,7 @@
                     tools:ignore="RtlSymmetry" />
 
                 <EditText
-                    android:id="@+id/signup_password"
+                    android:id="@+id/signin_password"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:layout_margin="20dp"
@@ -84,32 +86,97 @@
                     tools:ignore="RtlSymmetry" />
 
                 <Button
-                    android:id="@+id/signup_sign_in"
+                    android:id="@+id/signin_sign_in"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:background="@drawable/solid_buttons"
                     android:paddingLeft="50dp"
                     android:paddingRight="50dp"
-                    android:text="@string/sign_up"
-                    android:textColor="#D5403F3F"
-                    android:textStyle="bold" />
+                    android:text="@string/sign_in"
+                    android:textColor="#777" />
 
                 <TextView
-                    android:id="@+id/signup_forget_password"
+                    android:id="@+id/signin_forget_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Already have an account ?"
+                    android:text="Forgot Password?"
+                    android:textStyle="bold"
                     android:textColor="#fff"
-                    android:textDirection="ltr"
-                    android:textStyle="bold" />
+                    android:textDirection="ltr" />
 
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Don't have an account? "
+                    android:textColor="#777" />
+
+                <TextView
+                    android:id="@+id/signin_sign_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/signup"
+                    android:textColor="#006257"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:id="@+id/signin_bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/or_signin_with"
+                android:padding="5dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/signin_signin_with_mobile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/mobile"
+                    android:contentDescription="@string/mobile_number" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/mobile_number"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

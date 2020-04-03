@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Whatsapp</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_signin">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -8,5 +8,12 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="signin_failed">"signin failed"</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">sign in</string>
+    <string name="or_signin_with">Or signin with</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="signup">Signup</string>
+    <string name="sign_up">Sign Up</string>
 </resources>
