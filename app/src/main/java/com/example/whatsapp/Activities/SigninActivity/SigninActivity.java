@@ -2,11 +2,13 @@ package com.example.whatsapp.Activities.SigninActivity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.whatsapp.Activities.SignupActivity.SignupActivity;
 import com.example.whatsapp.Activities.UtilsActivity.$UtilsActivity;
@@ -64,6 +66,26 @@ public class SigninActivity extends AppCompatActivity implements $UtilsActivity 
             @Override
             public void onClick(View v) {
                 $Utils.go_to_target_activity(SigninActivity.this, SignupActivity.class);
+            }
+        });
+
+        this.$signin_sign_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean is_valid = true;
+                if (!Patterns.EMAIL_ADDRESS.matcher($signin_email.getText()).matches() || $signin_email.getText().toString().isEmpty()) {
+                    $signin_email.setError("Enter a valid email");
+                    is_valid = false;
+                }
+                if ($signin_password.getText().length() < 6) {
+                    $signin_password.setError("Password must larger than 6 character");
+                    is_valid = false;
+                }
+                if (is_valid) {
+
+                } else {
+                    $Utils.makeToast(SigninActivity.this, "Error when trying to signip...", Toast.LENGTH_LONG);
+                }
             }
         });
     }
