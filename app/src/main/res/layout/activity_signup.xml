@@ -45,11 +45,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="?actionBarSize"
                     android:layout_marginBottom="20dp"
-                    android:text="Hello there!\nwelcome to you"
+                    android:padding="10dp"
+                    android:text="@string/hello_there_nwelcome_to_you"
                     android:textColor="#fff"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -64,8 +64,10 @@
                     android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:textColor="#fff"
-                    android:textColorHint="#eee"
+                    android:textColorHint="#80EEEEEE"
                     android:textSize="17sp"
+                    android:drawableLeft="@drawable/gmail"
+                    android:drawablePadding="5dp"
                     tools:ignore="RtlSymmetry" />
 
                 <EditText
@@ -79,14 +81,16 @@
                     android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:textColor="#fff"
-                    android:textColorHint="#eee"
+                    android:textColorHint="#80EEEEEE"
                     android:textSize="17sp"
+                    android:drawableLeft="@drawable/lock"
+                    android:drawablePadding="5dp"
                     tools:ignore="RtlSymmetry" />
 
                 <Button
-                    android:id="@+id/signup_sign_in"
+                    android:id="@+id/signup_signup"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/solid_buttons"
                     android:paddingLeft="50dp"
                     android:paddingRight="50dp"
@@ -94,21 +98,45 @@
                     android:textColor="#D5403F3F"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/signup_forget_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Already have an account ?"
-                    android:textColor="#fff"
-                    android:textDirection="ltr"
-                    android:textStyle="bold" />
-
 
             </LinearLayout>
 
 
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/signup_forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:text="@string/already_have_an_account"
+                android:textColor="#D5403F3F"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/signup_signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/stroke_button"
+                android:paddingLeft="100dp"
+                android:paddingRight="100dp"
+                android:text="@string/sign_in"
+                android:textColor="#D5403F3F"
+                android:textStyle="bold">
+
+            </Button>
+
+        </LinearLayout>
 
 
     </LinearLayout>
