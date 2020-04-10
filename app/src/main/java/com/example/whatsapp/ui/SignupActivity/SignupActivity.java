@@ -36,46 +36,39 @@ public class SignupActivity extends AppCompatActivity implements $_Initializatio
     @Override
     protected void onStart() {
         super.onStart();
-        this.context = SignupActivity.this;
+
     }
 
 
     @Override
     public void initializationView() {
+        this.context = SignupActivity.this;
         this.activity_signup_binding = ActivitySignupBinding.inflate(getLayoutInflater());
         View view = this.activity_signup_binding.getRoot();
         setContentView(view);
 
-        this.progress_dialog = new ProgressDialog(this);
+        this.progress_dialog = new ProgressDialog(context);
         progress_dialog.setTitle("Creating account");
         progress_dialog.setMessage("Please wait, while creating new account for you...");
         progress_dialog.setCanceledOnTouchOutside(true);
 
-        this.signup_view_model = ViewModelProviders.of(this).get($_SignupViewModel.class);
-//        this.$signup_signin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                $_Utils.go_to_target_activity(SignupActivity.this, SigninActivity.class);
-//            }
-//        });
-//
+        this.signup_view_model = ViewModelProviders.of(this.context).get($_SignupViewModel.class);
 
+        this.activity_signup_binding.signupSignup.setOnClickListener(this);
+        this.activity_signup_binding.signupSignin.setOnClickListener(this);
     }
 
     @Override
     public void initializationActions() {
-        signup_view_model.getLive_data_user_model().observe(this, new Observer<$_UserModel>() {
+        signup_view_model.getLive_data_user_model().observe(context, new Observer<$_UserModel>() {
             @Override
             public void onChanged(@Nullable $_UserModel userModel) {
                 progress_dialog.dismiss();
                 if (userModel != null) {
                     $_Utils.makeToast(context, "Account created successful", Toast.LENGTH_LONG);
                     $_Utils.go_to_target_activity(context, SigninActivity.class);
-                    System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
                 } else {
                     $_Utils.makeToast(context, "Account created unsuccessful", Toast.LENGTH_LONG);
-                    System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbb");
-
                 }
             }
         });
@@ -98,6 +91,7 @@ public class SignupActivity extends AppCompatActivity implements $_Initializatio
                 }
                 break;
             case R.id.signup_signin:
+                $_Utils.go_to_target_activity(SignupActivity.this, SigninActivity.class);
                 break;
             default:
                 $_Utils.makeToast(context, "No any element founded with id : " + String.valueOf(view.getId()), Toast.LENGTH_LONG);

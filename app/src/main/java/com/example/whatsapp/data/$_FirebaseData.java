@@ -16,10 +16,16 @@ public class $_FirebaseData {
 
 
     public Task<AuthResult> createAccountByGmail(String email, String password) {
-        return firebase_auth.createUserWithEmailAndPassword(email, password);
+        return this.firebase_auth.createUserWithEmailAndPassword(email, password);
+    }
+
+    public Task<AuthResult> signinAccountByGmail(String email, String password){
+
+        return this.firebase_auth.signInWithEmailAndPassword(email, password);
     }
 
 
+    // Getter and Setter
     public static $_FirebaseData getINSTANCE() {
         if(INSTANCE == null){
             INSTANCE = new $_FirebaseData();

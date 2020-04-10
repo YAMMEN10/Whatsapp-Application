@@ -14,8 +14,8 @@
         android:layout_height="wrap_content">
 
         <include
-            android:id="@+id/main_page_toolbar"
-            layout="@layout/appbar_layout" />
+            android:id="@+id/main_appbar"
+            layout="@layout/my_appbar_layout" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/main_taps_layout"
