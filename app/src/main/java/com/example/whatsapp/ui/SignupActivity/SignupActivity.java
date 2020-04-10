@@ -15,8 +15,10 @@ import com.example.whatsapp.Utils.$_Utils;
 import com.example.whatsapp.Utils.Validation.$_EmailValidator;
 import com.example.whatsapp.Utils.Validation.$_GreaterThanValidator;
 import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
+import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ActivitySignupBinding;
 import com.example.whatsapp.model.$_UserModel;
+import com.example.whatsapp.ui.MainActivity.MainActivity;
 import com.example.whatsapp.ui.SigninActivity.SigninActivity;
 
 public class SignupActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
@@ -36,23 +38,26 @@ public class SignupActivity extends AppCompatActivity implements $_Initializatio
     @Override
     protected void onStart() {
         super.onStart();
-
+        if ($_FirebaseData.getINSTANCE().getFirebase_user() != null) {
+            $_Utils.goToTargetActivity(context, MainActivity.class);
+        }
     }
 
 
     @Override
     public void initializationView() {
-        this.context = SignupActivity.this;
         this.activity_signup_binding = ActivitySignupBinding.inflate(getLayoutInflater());
         View view = this.activity_signup_binding.getRoot();
         setContentView(view);
 
-        this.progress_dialog = new ProgressDialog(context);
-        progress_dialog.setTitle("Creating account");
-        progress_dialog.setMessage("Please wait, while creating new account for you...");
-        progress_dialog.setCanceledOnTouchOutside(true);
+        this.context = SignupActivity.this;
+
+
+        $_FirebaseData.getINSTANCE().setFirebase_user($_FirebaseData.getINSTANCE().getFirebase_auth().getCurrentUser());
 
         this.signup_view_model = ViewModelProviders.of(this.context).get($_SignupViewModel.class);
+
+        this.progress_dialog = $_Utils.makeProgressDialog(context);
 
         this.activity_signup_binding.signupSignup.setOnClickListener(this);
         this.activity_signup_binding.signupSignin.setOnClickListener(this);
@@ -66,7 +71,7 @@ public class SignupActivity extends AppCompatActivity implements $_Initializatio
                 progress_dialog.dismiss();
                 if (userModel != null) {
                     $_Utils.makeToast(context, "Account created successful", Toast.LENGTH_LONG);
-                    $_Utils.go_to_target_activity(context, SigninActivity.class);
+                    $_Utils.goToTargetActivityWithFlag(context, MainActivity.class);
                 } else {
                     $_Utils.makeToast(context, "Account created unsuccessful", Toast.LENGTH_LONG);
                 }
@@ -91,7 +96,7 @@ public class SignupActivity extends AppCompatActivity implements $_Initializatio
                 }
                 break;
             case R.id.signup_signin:
-                $_Utils.go_to_target_activity(SignupActivity.this, SigninActivity.class);
+                $_Utils.goToTargetActivity(SignupActivity.this, SigninActivity.class);
                 break;
             default:
                 $_Utils.makeToast(context, "No any element founded with id : " + String.valueOf(view.getId()), Toast.LENGTH_LONG);
