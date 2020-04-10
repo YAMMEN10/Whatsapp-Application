@@ -1,4 +1,4 @@
-package com.example.whatsapp.Fragments.MainFragments;
+package com.example.whatsapp.ui.ChatFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

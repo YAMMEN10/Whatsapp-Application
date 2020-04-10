@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.SignupActivity.SignupActivity">
+    tools:context=".ui.SignupActivity.SignupActivity">
 
     <LinearLayout
         android:id="@+id/signup_main_layout"

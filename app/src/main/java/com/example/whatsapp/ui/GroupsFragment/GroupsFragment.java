@@ -1,4 +1,4 @@
-package com.example.whatsapp.Fragments.MainFragments;
+package com.example.whatsapp.ui.GroupsFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,9 +11,9 @@ import com.example.whatsapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContactsFragment extends Fragment {
+public class GroupsFragment extends Fragment {
 
-    public ContactsFragment() {
+    public GroupsFragment() {
         // Required empty public constructor
     }
 
@@ -21,8 +21,7 @@ public class ContactsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contacts, container, false);
+        return inflater.inflate(R.layout.fragment_groupsfragment, container, false);
     }
 }
