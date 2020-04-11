@@ -1,0 +1,107 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SettingActivity.SettingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/splash_setting" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <xyz.schwaab.avvylib.AvatarView
+                android:id="@+id/profile_photo"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/eye"
+                app:avvy_border_color="@color/colorWhite"
+                app:avvy_border_highlight_color="@color/colorWhite"
+                app:avvy_border_thickness="5dp"
+                app:avvy_border_thickness_highlight="0dp"
+                app:avvy_distance_to_border="5dp"
+                app:avvy_highlighted="true"
+                app:avvy_loading_arches="5"
+                app:avvy_loading_arches_degree_area="90"
+                app:avvy_middle_color="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginTop="150dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_below="@+id/profile_photo"
+                android:text="Hi, i'm online"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textDirection="ltr"
+                android:textSize="20dp"
+                android:textStyle="italic|bold"
+                android:padding="10dp"/>
+        </RelativeLayout>
+
+
+        <EditText
+            android:id="@+id/signin_email"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_margin="20dp"
+            android:background="@drawable/inputs"
+            android:drawableLeft="@drawable/gmail"
+            android:drawablePadding="5dp"
+            android:hint="@string/email"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#80EEEEEE"
+            android:textSize="17sp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/signin_email"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_margin="20dp"
+            android:background="@drawable/inputs"
+            android:drawableLeft="@drawable/gmail"
+            android:drawablePadding="5dp"
+            android:hint="@string/email"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#80EEEEEE"
+            android:textSize="17sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+</ScrollView>

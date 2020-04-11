@@ -17,6 +17,7 @@ import com.example.whatsapp.Utils.$_Utils;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ActivityMainBinding;
 import com.example.whatsapp.ui.MainActivity.Adapter.$_TabsAccessAdapter;
+import com.example.whatsapp.ui.SettingActivity.SettingActivity;
 import com.example.whatsapp.ui.SigninActivity.SigninActivity;
 
 public class MainActivity extends AppCompatActivity implements $_InitializationView {
@@ -35,9 +36,11 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
     @Override
     protected void onStart() {
         super.onStart();
-        if ($_FirebaseData.getINSTANCE().getFirebase_user() == null) {
-            $_Utils.goToTargetActivity(context, SigninActivity.class);
-        }
+//        if ($_FirebaseData.getINSTANCE().getFirebase_user() == null) {
+//            $_Utils.goToTargetActivity(context, SigninActivity.class);
+//        }
+                    $_Utils.goToTargetActivity(context, SettingActivity.class);
+
     }
 
     @Override
