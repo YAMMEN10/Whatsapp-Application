@@ -3,8 +3,9 @@ package com.example.whatsapp.Utils;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class $_Utils {
@@ -20,11 +21,11 @@ public class $_Utils {
         source_activity.finish();
     }
 
-    public static void makeToast(Context context, String message, int length){
+    public static void makeToast(Context context, String message, int length) {
         Toast.makeText(context, message, length).show();
     }
 
-    public static ProgressDialog makeProgressDialog(Context context){
+    public static ProgressDialog makeProgressDialog(Context context) {
         ProgressDialog progress_dialog;
         progress_dialog = new ProgressDialog(context);
         progress_dialog.setTitle("Creating account");

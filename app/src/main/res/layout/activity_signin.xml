@@ -2,6 +2,7 @@
 
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -55,48 +56,83 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/signin_email"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize"
-                    android:layout_margin="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/inputs"
-                    android:drawableLeft="@drawable/gmail"
-                    android:drawablePadding="5dp"
-                    android:hint="@string/email"
-                    android:paddingStart="10dp"
-                    android:paddingLeft="10dp"
+                    android:hint="Email"
+                    android:layoutDirection="ltr"
                     android:textColor="#fff"
                     android:textColorHint="#80EEEEEE"
-                    android:textSize="17sp"
-                    tools:ignore="RtlSymmetry" />
+                    android:textDirection="ltr"
+                    app:endIconMode="clear_text"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#80EEEEEE"
+                    app:startIconCheckable="true"
+                    app:startIconDrawable="@drawable/gmail"
+                    app:startIconTint="@color/transparent"
+                    app:startIconTintMode="screen">
 
-                <EditText
-                    android:id="@+id/signin_password"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/signinEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:textColor="@color/colorWhite"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize"
-                    android:layout_margin="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/inputs"
-                    android:drawableLeft="@drawable/lock"
-                    android:drawablePadding="5dp"
                     android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:paddingStart="10dp"
-                    android:paddingLeft="10dp"
+                    android:layoutDirection="ltr"
                     android:textColor="#fff"
                     android:textColorHint="#80EEEEEE"
-                    android:textSize="17sp"
-                    tools:ignore="RtlSymmetry" />
+                    android:textDirection="ltr"
+                    app:boxBackgroundColor="@color/transparent"
+                    app:boxBackgroundMode="filled"
+                    app:endIconMode="clear_text"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#80EEEEEE"
+                    app:startIconCheckable="true"
+                    app:startIconDrawable="@drawable/lock"
+                    app:startIconTint="@color/transparent"
 
-                <Button
+                    app:startIconTintMode="screen">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/signinPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:inputType="textWebPassword"
+                        android:textColor="@color/colorWhite"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/signin_sign_in"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/solid_buttons"
                     android:paddingLeft="50dp"
                     android:paddingRight="50dp"
                     android:text="@string/sign_in"
-                    android:textColor="#777" />
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    />
 
                 <TextView
                     android:id="@+id/signin_forget_password"
@@ -158,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/signin_signin_with_mobile"
                     android:layout_width="40dp"
                     android:layout_height="40dp"

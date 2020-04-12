@@ -1,7 +1,7 @@
 package com.example.whatsapp.ui.MainActivity;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.whatsapp.data.$_FirebaseData;
 
@@ -12,7 +12,7 @@ public class MainViewModel extends ViewModel {
         this.live_data_logout = new MutableLiveData<>();
     }
 
-    public void signOutAccount(){
+    public void signOutAccount() {
         boolean sign_out = $_FirebaseData.getINSTANCE().signOutAccount();
         this.live_data_logout.setValue(sign_out);
     }

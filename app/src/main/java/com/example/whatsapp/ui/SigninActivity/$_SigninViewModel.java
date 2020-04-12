@@ -1,9 +1,8 @@
 package com.example.whatsapp.ui.SigninActivity;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.model.$_UserModel;

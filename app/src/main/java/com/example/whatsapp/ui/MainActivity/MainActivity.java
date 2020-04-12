@@ -1,15 +1,16 @@
 package com.example.whatsapp.ui.MainActivity;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.whatsapp.R;
 import com.example.whatsapp.Utils.$_InitializationView;
@@ -19,6 +20,7 @@ import com.example.whatsapp.databinding.ActivityMainBinding;
 import com.example.whatsapp.ui.MainActivity.Adapter.$_TabsAccessAdapter;
 import com.example.whatsapp.ui.SettingActivity.SettingActivity;
 import com.example.whatsapp.ui.SigninActivity.SigninActivity;
+import com.example.whatsapp.ui.SignupActivity.SignupActivity;
 
 public class MainActivity extends AppCompatActivity implements $_InitializationView {
     private ActivityMainBinding activity_main_binding;
@@ -36,10 +38,9 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
     @Override
     protected void onStart() {
         super.onStart();
-//        if ($_FirebaseData.getINSTANCE().getFirebase_user() == null) {
-//            $_Utils.goToTargetActivity(context, SigninActivity.class);
-//        }
-                    $_Utils.goToTargetActivity(context, SettingActivity.class);
+        if ($_FirebaseData.getINSTANCE().getFirebase_user() == null) {
+            $_Utils.goToTargetActivity(context, SignupActivity.class);
+        }
 
     }
 

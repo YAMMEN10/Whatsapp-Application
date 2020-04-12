@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context=".ui.SettingActivity.SettingActivity">
 
     <LinearLayout
@@ -37,70 +38,132 @@
 
             <xyz.schwaab.avvylib.AvatarView
                 android:id="@+id/profile_photo"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/eye"
-                app:avvy_border_color="@color/colorWhite"
-                app:avvy_border_highlight_color="@color/colorWhite"
+                app:avvy_border_color="#262B33"
+                app:avvy_border_highlight_color="@color/colorAccent"
                 app:avvy_border_thickness="5dp"
                 app:avvy_border_thickness_highlight="0dp"
                 app:avvy_distance_to_border="5dp"
                 app:avvy_highlighted="true"
                 app:avvy_loading_arches="5"
                 app:avvy_loading_arches_degree_area="90"
-                app:avvy_middle_color="@color/colorWhite" />
+                app:avvy_middle_color="@color/colorAccent" />
+
 
             <TextView
+                android:id="@+id/profile_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_photo"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="bottom|center"
+                android:layout_marginTop="130dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:text="Yamen Abd alrahman"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textDirection="ltr"
+                android:textSize="23dp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/profile_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:layout_marginTop="150dp"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
                 android:layout_below="@+id/profile_photo"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="bottom|center"
+                android:layout_marginTop="200dp"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="Hi, i'm online"
                 android:textAlignment="center"
                 android:textAllCaps="false"
+                android:textColor="@color/black"
                 android:textDirection="ltr"
-                android:textSize="20dp"
-                android:textStyle="italic|bold"
-                android:padding="10dp"/>
+
+                android:textSize="15dp" />
         </RelativeLayout>
 
 
-        <EditText
-            android:id="@+id/signin_email"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/profile_input_username"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:layout_margin="20dp"
-            android:background="@drawable/inputs"
-            android:drawableLeft="@drawable/gmail"
-            android:drawablePadding="5dp"
-            android:hint="@string/email"
-            android:paddingStart="10dp"
-            android:paddingLeft="10dp"
-            android:textColor="#fff"
-            android:textColorHint="#80EEEEEE"
-            android:textSize="17sp"
-            tools:ignore="RtlSymmetry" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColorHint="@color/ligth_black"
+            app:startIconDrawable="@drawable/username"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/transparent"
+            android:layoutDirection="ltr"
+            android:textDirection="ltr"
+            android:hint="Username"
+            app:startIconCheckable="true"
+            app:endIconMode="clear_text"
+            >
 
-        <EditText
-            android:id="@+id/signin_email"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/profile_input_status"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColorHint="@color/ligth_black"
+            app:startIconDrawable="@drawable/status"
+            app:startIconTintMode="screen"
+            app:startIconTint="@color/transparent"
+            android:layoutDirection="ltr"
+            android:textDirection="ltr"
+            android:hint="Status"
+            app:startIconCheckable="true"
+            app:endIconMode="clear_text"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signup_signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="20dp"
-            android:background="@drawable/inputs"
-            android:drawableLeft="@drawable/gmail"
-            android:drawablePadding="5dp"
-            android:hint="@string/email"
-            android:paddingStart="10dp"
-            android:paddingLeft="10dp"
-            android:textColor="#fff"
-            android:textColorHint="#80EEEEEE"
-            android:textSize="17sp"
-            tools:ignore="RtlSymmetry" />
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
+            android:background="@drawable/stroke_button"
+            android:text="Update Information"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:textStyle="bold">
+
+        </androidx.appcompat.widget.AppCompatButton>
 
     </LinearLayout>
 
