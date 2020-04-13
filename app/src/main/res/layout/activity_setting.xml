@@ -95,72 +95,71 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/profile_input_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColorHint="@color/ligth_black"
-            app:startIconDrawable="@drawable/username"
-            app:startIconTintMode="screen"
-            app:startIconTint="@color/transparent"
-            android:layoutDirection="ltr"
-            android:textDirection="ltr"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginRight="30dp"
             android:hint="Username"
-            app:startIconCheckable="true"
+            android:layoutDirection="ltr"
+            android:textColorHint="@color/ligth_black"
+            android:textDirection="ltr"
             app:endIconMode="clear_text"
+            app:startIconCheckable="true"
+            app:startIconDrawable="@drawable/username"
+            app:startIconTint="@color/transparent"
+            app:startIconTintMode="screen"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_input_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
-
-                />
+                android:textSize="15dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/profile_input_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColorHint="@color/ligth_black"
-            app:startIconDrawable="@drawable/status"
-            app:startIconTintMode="screen"
-            app:startIconTint="@color/transparent"
-            android:layoutDirection="ltr"
-            android:textDirection="ltr"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
             android:hint="Status"
-            app:startIconCheckable="true"
+            android:layoutDirection="ltr"
+            android:textColorHint="@color/ligth_black"
+            android:textDirection="ltr"
             app:endIconMode="clear_text"
-            >
+            app:startIconCheckable="true"
+            app:startIconDrawable="@drawable/status"
+            app:startIconTint="@color/transparent"
+            app:startIconTintMode="screen">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_input_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
-
+                android:textSize="15dp"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/signup_signin"
+            android:id="@+id/profile_update_information"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/stroke_button"
             android:paddingLeft="100dp"
             android:paddingRight="100dp"
-            android:background="@drawable/stroke_button"
             android:text="Update Information"
-            android:textColor="@color/black"
             android:textAllCaps="false"
+            android:textColor="@color/black"
             android:textStyle="bold">
 
         </androidx.appcompat.widget.AppCompatButton>

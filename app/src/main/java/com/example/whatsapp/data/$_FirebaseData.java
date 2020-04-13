@@ -1,5 +1,6 @@
 package com.example.whatsapp.data;
 
+import com.example.whatsapp.model.$_UserModel;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +29,7 @@ public class $_FirebaseData {
         return this.firebase_auth.signInWithEmailAndPassword(email, password);
     }
 
-    public Task storeUsers(String uid){
+    public Task storeUsers(String uid) {
         return this.root_database_reference.child("Users").child(uid).setValue("");
     }
 
@@ -40,6 +41,18 @@ public class $_FirebaseData {
             return false;
         }
     }
+
+    public DatabaseReference checkUsernameIsExist() {
+        String user_id = this.firebase_user.getUid();
+        return this.root_database_reference.child("Users").
+                child(user_id);
+    }
+
+    public Task<Void> saveUserInformation(String username, String status){
+        $_UserModel user = new $_UserModel(this.firebase_user.getUid(), username, this.firebase_user.getEmail(), status);
+        return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).setValue(user);
+    }
+
 
 
     // Getter and Setter

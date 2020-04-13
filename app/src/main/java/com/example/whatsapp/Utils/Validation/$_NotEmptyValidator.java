@@ -1,7 +1,8 @@
 package com.example.whatsapp.Utils.Validation;
 
 import android.view.View;
-import android.widget.EditText;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class $_NotEmptyValidator extends $_Validator {
     public $_NotEmptyValidator(View view) {
@@ -10,8 +11,8 @@ public class $_NotEmptyValidator extends $_Validator {
 
     @Override
     public boolean validate() {
-        if (((EditText) this.view).getText().toString().isEmpty()) {
-            ((EditText) this.view).setError("Enter a valid email");
+        if (((TextInputEditText) this.view).getText().toString().isEmpty()) {
+            ((TextInputEditText) this.view).setError("Must be not empty");
             return false;
         }
         return true;

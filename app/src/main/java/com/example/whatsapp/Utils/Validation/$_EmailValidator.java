@@ -2,7 +2,8 @@ package com.example.whatsapp.Utils.Validation;
 
 import android.util.Patterns;
 import android.view.View;
-import android.widget.EditText;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class $_EmailValidator extends $_Validator {
 
@@ -12,9 +13,9 @@ public class $_EmailValidator extends $_Validator {
 
     @Override
     public boolean validate() {
-        if (!Patterns.EMAIL_ADDRESS.matcher(((EditText)this.view).getText()).matches()) {
-            ((EditText)this.view).setError("Enter a valid email");
-            return  false;
+        if (!Patterns.EMAIL_ADDRESS.matcher(((TextInputEditText) this.view).getText()).matches()) {
+            ((TextInputEditText) this.view).setError("Enter a valid email");
+            return false;
         }
         return true;
     }

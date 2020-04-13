@@ -1,7 +1,8 @@
 package com.example.whatsapp.Utils.Validation;
 
 import android.view.View;
-import android.widget.EditText;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class $_GreaterThanValidator extends $_Validator {
     private int limit;
@@ -13,8 +14,8 @@ public class $_GreaterThanValidator extends $_Validator {
 
     @Override
     public boolean validate() {
-        if (((EditText) this.view).getText().length() < this.limit) {
-            ((EditText) this.view).setError("Password must larger than 6 character");
+        if (((TextInputEditText) this.view).getText().length() < this.limit) {
+            ((TextInputEditText) this.view).setError("Input must larger than 6 character");
             return false;
         }
         return true;

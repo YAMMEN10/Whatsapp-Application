@@ -25,7 +25,7 @@ public class $_SigninViewModel extends ViewModel {
                         if (task.isSuccessful()) {
                             String uid = task.getResult().getUser().getUid();
                             String email = task.getResult().getUser().getEmail();
-                            $_UserModel user_model = new $_UserModel(uid, email);
+                            $_UserModel user_model = new $_UserModel(uid, "", email, "");
                             live_data_user_model.setValue(user_model);
                         } else {
                             live_data_user_model.setValue(null);

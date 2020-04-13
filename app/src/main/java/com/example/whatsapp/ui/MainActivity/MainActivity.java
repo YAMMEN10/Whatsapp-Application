@@ -1,6 +1,8 @@
 package com.example.whatsapp.ui.MainActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
         super.onStart();
         if ($_FirebaseData.getINSTANCE().getFirebase_user() == null) {
             $_Utils.goToTargetActivity(context, SignupActivity.class);
+        } else {
+            this.main_view_model.checkUsernameIsExist();
         }
 
     }
@@ -75,6 +80,18 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
                 }
             }
         });
+
+        this.main_view_model.getLive_data_check_username_is_exist().observe(context, new Observer<Pair<Boolean, String>>() {
+            @Override
+            public void onChanged(Pair<Boolean, String> data) {
+                if (data.first) {
+                    $_Utils.makeToast(context, data.second, Toast.LENGTH_LONG);
+                } else {
+                    $_Utils.goToTargetActivityWithFlag(context, SettingActivity.class);
+                    $_Utils.makeToast(context, data.second, Toast.LENGTH_LONG);
+                }
+            }
+        });
     }
 
     @Override
@@ -86,10 +103,12 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.main_find_friend_option:
                 break;
             case R.id.main_settings_option:
+                $_Utils.goToTargetActivity(context, SettingActivity.class);
                 break;
             case R.id.main_logout_option:
                 this.main_view_model.signOutAccount();
@@ -97,4 +116,6 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
         }
         return true;
     }
+
+
 }
