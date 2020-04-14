@@ -48,12 +48,17 @@ public class $_FirebaseData {
                 child(user_id);
     }
 
-    public Task<Void> saveUserInformation(String username, String status){
-        $_UserModel user = new $_UserModel(this.firebase_user.getUid(), username, this.firebase_user.getEmail(), status);
-        return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).setValue(user);
+    public Task<Void> saveUserNameInformation(String username){
+        return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).child("name").setValue(username);
     }
 
+    public Task<Void> saveUserStatusInformation(String status){
+        return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).child("status").setValue(status);
+    }
 
+    public DatabaseReference getSettingInformation(){
+        return this.root_database_reference.child("Users").child(this.firebase_user.getUid());
+    }
 
     // Getter and Setter
     public static $_FirebaseData getINSTANCE() {

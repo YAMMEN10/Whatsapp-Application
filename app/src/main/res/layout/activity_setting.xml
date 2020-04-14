@@ -8,8 +8,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:divider="@drawable/linear_layout_divider"
+        android:orientation="vertical"
+        android:showDividers="middle">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -34,7 +36,9 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
+
             </LinearLayout>
+
 
             <xyz.schwaab.avvylib.AvatarView
                 android:id="@+id/profile_photo"
@@ -42,7 +46,7 @@
                 android:layout_height="250dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/eye"
+                android:src="@drawable/default_photo"
                 app:avvy_border_color="#262B33"
                 app:avvy_border_highlight_color="@color/colorAccent"
                 app:avvy_border_thickness="5dp"
@@ -54,116 +58,292 @@
                 app:avvy_middle_color="@color/colorAccent" />
 
 
-            <TextView
-                android:id="@+id/profile_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_photo"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="bottom|center"
-                android:layout_marginTop="130dp"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:maxLines="2"
-                android:padding="10dp"
-                android:text="Yamen Abd alrahman"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textDirection="ltr"
-                android:textSize="23dp"
-                android:textStyle="italic|bold" />
-
-            <TextView
-                android:id="@+id/profile_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_photo"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="bottom|center"
-                android:layout_marginTop="200dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Hi, i'm online"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textDirection="ltr"
-
-                android:textSize="15dp" />
         </RelativeLayout>
 
-
-        <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="-20dp"
-            android:layout_marginRight="30dp"
-            android:hint="Username"
+            android:layout_marginTop="-60dp"
+            android:background="@color/transparent"
+            android:clickable="true"
             android:layoutDirection="ltr"
-            android:textColorHint="@color/ligth_black"
-            android:textDirection="ltr"
-            app:endIconMode="clear_text"
-            app:startIconCheckable="true"
-            app:startIconDrawable="@drawable/username"
-            app:startIconTint="@color/transparent"
-            app:startIconTintMode="screen"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardCornerRadius="0dp"
+            app:cardForegroundColor="@color/transparent"
+            app:rippleColor="@color/colorWhite">
 
-            >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/profile_input_username"
+            <!-- Media -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
-                android:textSize="15dp" />
+                android:orientation="horizontal">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/username" />
 
-        <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Title, secondary and supporting text -->
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:padding="10dp"
+                        android:text="Username"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="@color/black"
+                        android:textDirection="ltr"
+
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/profile_username"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="Boot name"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textDirection="ltr"
+
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:hint="Status"
+            android:background="@color/transparent"
+            android:clickable="true"
             android:layoutDirection="ltr"
-            android:textColorHint="@color/ligth_black"
-            android:textDirection="ltr"
-            app:endIconMode="clear_text"
-            app:startIconCheckable="true"
-            app:startIconDrawable="@drawable/status"
-            app:startIconTint="@color/transparent"
-            app:startIconTintMode="screen">
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardCornerRadius="0dp"
+            app:cardForegroundColor="@color/transparent"
+            app:rippleColor="@color/colorWhite">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/profile_input_status"
+
+            <!-- Media -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
-                android:textSize="15dp"
-                />
+                android:orientation="horizontal">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/gmail" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Title, secondary and supporting text -->
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:padding="10dp"
+                        android:text="Email"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="@color/black"
+                        android:textDirection="ltr"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/profile_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="example@gmail.com"
+                        android:textAlignment="textStart"
+
+                        android:textAllCaps="false"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textDirection="ltr"
+
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/profile_update_information"
-            android:layout_width="wrap_content"
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_status"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/stroke_button"
-            android:paddingLeft="100dp"
-            android:paddingRight="100dp"
-            android:text="Update Information"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textStyle="bold">
+            android:background="@color/transparent"
+            android:clickable="true"
+            android:layoutDirection="ltr"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardCornerRadius="0dp"
+            app:cardForegroundColor="@color/transparent"
+            app:rippleColor="@color/colorWhite">
 
-        </androidx.appcompat.widget.AppCompatButton>
 
+            <!-- Media -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:src="@drawable/information" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Title, secondary and supporting text -->
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:padding="10dp"
+                        android:text="Status"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="@color/black"
+                        android:textDirection="ltr"
+                        android:textSize="15dp"
+
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/profile_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="Hi, i'm online"
+                        android:textAlignment="textStart"
+
+                        android:textAllCaps="false"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textDirection="ltr"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
 </ScrollView>
+
+
+    <!--        <com.google.android.material.textfield.TextInputLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginLeft="30dp"-->
+    <!--            android:layout_marginTop="-60dp"-->
+    <!--            android:layout_marginRight="30dp"-->
+    <!--            android:hint="Username"-->
+    <!--            android:layoutDirection="ltr"-->
+    <!--            android:textColorHint="@color/ligth_black"-->
+    <!--            android:textDirection="ltr"-->
+    <!--            app:endIconMode="clear_text"-->
+    <!--            app:startIconCheckable="true"-->
+    <!--            app:startIconDrawable="@drawable/username"-->
+    <!--            app:startIconTint="@color/transparent"-->
+    <!--            app:startIconTintMode="screen"-->
+
+    <!--            >-->
+
+    <!--            <com.google.android.material.textfield.TextInputEditText-->
+    <!--                android:id="@+id/profile_input_username"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:background="@color/transparent"-->
+    <!--                android:textSize="15dp" />-->
+
+    <!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+    <!--        <com.google.android.material.textfield.TextInputLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginLeft="30dp"-->
+    <!--            android:layout_marginTop="20dp"-->
+    <!--            android:layout_marginRight="30dp"-->
+    <!--            android:hint="Status"-->
+    <!--            android:layoutDirection="ltr"-->
+    <!--            android:textColorHint="@color/ligth_black"-->
+    <!--            android:textDirection="ltr"-->
+    <!--            app:endIconMode="clear_text"-->
+    <!--            app:startIconCheckable="true"-->
+    <!--            app:startIconDrawable="@drawable/status"-->
+    <!--            app:startIconTint="@color/transparent"-->
+    <!--            app:startIconTintMode="screen">-->
+
+    <!--            <com.google.android.material.textfield.TextInputEditText-->
+    <!--                android:id="@+id/profile_input_status"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:background="@color/transparent"-->
+    <!--                android:textSize="15dp"-->
+    <!--                />-->
+
+    <!--        </com.google.android.material.textfield.TextInputLayout>-->

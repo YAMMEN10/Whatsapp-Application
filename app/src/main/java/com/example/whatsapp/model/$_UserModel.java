@@ -2,15 +2,17 @@ package com.example.whatsapp.model;
 
 public class $_UserModel {
     private String id;
-    private String username;
+    private String name;
     private String email;
     private String status;
+    private String picture;
 
-    public $_UserModel(String id, String username, String email, String status) {
+    public $_UserModel(String id, String email, String name, String status, String picture) {
         this.id = id;
-        this.username = username;
         this.email = email;
+        this.name = name;
         this.status = status;
+        this.picture = picture;
     }
 
     // Getter and setter
@@ -22,12 +24,12 @@ public class $_UserModel {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -44,5 +46,13 @@ public class $_UserModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
