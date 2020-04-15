@@ -60,6 +60,26 @@ public class $_FirebaseData {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid());
     }
 
+    public Task<Void> createGroup(String group_name){
+        return this.root_database_reference.child("Groups").child(this.firebase_user.getUid()).child(group_name).setValue("");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Getter and Setter
     public static $_FirebaseData getINSTANCE() {
         if (INSTANCE == null) {

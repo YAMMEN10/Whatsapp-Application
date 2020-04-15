@@ -1,6 +1,6 @@
 package com.example.whatsapp.ui.MainActivity;
 
-import android.graphics.Color;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.Menu;
@@ -11,13 +11,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.whatsapp.R;
 import com.example.whatsapp.Utils.$_InitializationView;
 import com.example.whatsapp.Utils.$_Utils;
+import com.example.whatsapp.Utils.InputDialog;
+import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ActivityMainBinding;
 import com.example.whatsapp.ui.MainActivity.Adapter.$_TabsAccessAdapter;
@@ -25,11 +26,13 @@ import com.example.whatsapp.ui.SettingActivity.SettingActivity;
 import com.example.whatsapp.ui.SigninActivity.SigninActivity;
 import com.example.whatsapp.ui.SignupActivity.SignupActivity;
 
-public class MainActivity extends AppCompatActivity implements $_InitializationView {
+public class MainActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
     private ActivityMainBinding activity_main_binding;
     private MainViewModel main_view_model;
     private $_TabsAccessAdapter tabs_access_adapter;
     private MainActivity context;
+    private InputDialog alert_dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
         this.tabs_access_adapter = new $_TabsAccessAdapter(getSupportFragmentManager(), 3);
         activity_main_binding.mainTabsViewPage.setAdapter(this.tabs_access_adapter);
         activity_main_binding.mainTapsLayout.setupWithViewPager(activity_main_binding.mainTabsViewPage);
+        this.activity_main_binding.mainItemFloatingActionMenu.setOnClickListener(this);
+
     }
 
     @Override
@@ -88,6 +93,18 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
                     $_Utils.makeToast(context, data.second, Toast.LENGTH_LONG);
                 } else {
                     $_Utils.goToTargetActivityWithFlag(context, SettingActivity.class);
+                    $_Utils.makeToast(context, data.second, Toast.LENGTH_LONG);
+                }
+            }
+        });
+
+
+        this.main_view_model.getLive_data_create_group().observe(context, new Observer<Pair<Boolean, String>>() {
+            @Override
+            public void onChanged(Pair<Boolean, String> data) {
+                if (data.first) {
+                    $_Utils.makeToast(context, data.second, Toast.LENGTH_LONG);
+                } else {
                     $_Utils.makeToast(context, data.second, Toast.LENGTH_LONG);
                 }
             }
@@ -118,4 +135,43 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
     }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.main_item_floating_action_menu:
+                initialInputDialog("Group name");
+                activity_main_binding.mainFloatingActionMenu.close(true);
+        }
+    }
+
+    public void initialInputDialog(String message) {
+        alert_dialog = new InputDialog(context, message);
+
+        alert_dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+            }
+        });
+        alert_dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                boolean not_empty_validation = new $_NotEmptyValidator(alert_dialog.getInput()).validate();
+                if (not_empty_validation) {
+                    String group_name = alert_dialog.getInput().getText().toString();
+                    main_view_model.createGroup(group_name);
+                } else {
+                    $_Utils.makeToast(context, "Group name is required...", Toast.LENGTH_LONG);
+                }
+            }
+        });
+
+
+        alert_dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+
+
+        alert_dialog.show();
+    }
 }

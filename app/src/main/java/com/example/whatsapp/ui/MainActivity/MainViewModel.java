@@ -7,16 +7,20 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.whatsapp.data.$_FirebaseData;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainViewModel extends ViewModel {
     private MutableLiveData<Boolean> live_data_logout;
+    private MutableLiveData<Pair<Boolean, String>> live_data_create_group;
     private MutableLiveData<Pair<Boolean, String>> live_data_check_username_is_exist;
 
     public MainViewModel() {
         this.live_data_logout = new MutableLiveData<>();
+        this.live_data_create_group = new MutableLiveData<>();
         this.live_data_check_username_is_exist = new MutableLiveData<>();
     }
 
@@ -44,11 +48,34 @@ public class MainViewModel extends ViewModel {
         });
     }
 
+    public void createGroup(final String group_name){
+        $_FirebaseData.getINSTANCE().createGroup(group_name).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    live_data_check_username_is_exist.setValue(new Pair<Boolean, String>(true, "Group "+ group_name +" created successfully"));
+
+                }else{
+                    live_data_check_username_is_exist.setValue(new Pair<Boolean, String>(true, "Group "+ group_name +" unsuccessfully created"));
+                }
+            }
+        });
+    }
+
+
+
+
+
+
     public MutableLiveData<Boolean> getLive_data_logout() {
         return live_data_logout;
     }
 
     public MutableLiveData<Pair<Boolean, String>> getLive_data_check_username_is_exist() {
         return live_data_check_username_is_exist;
+    }
+
+    public MutableLiveData<Pair<Boolean, String>> getLive_data_create_group() {
+        return live_data_create_group;
     }
 }

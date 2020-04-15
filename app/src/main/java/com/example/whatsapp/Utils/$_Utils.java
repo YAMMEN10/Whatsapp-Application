@@ -4,14 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.view.LayoutInflater;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.input.DialogInputExtKt;
 import com.example.whatsapp.R;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -43,8 +40,8 @@ public class $_Utils {
     }
 
     protected void showInputDialog(Context context) {
-         AlertDialog.Builder alert;
-         final TextInputEditText input;
+        AlertDialog.Builder alert;
+        final TextInputEditText input;
         alert = new AlertDialog.Builder(context);
         input = new TextInputEditText(context);
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {

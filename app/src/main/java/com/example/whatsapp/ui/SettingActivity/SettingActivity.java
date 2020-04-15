@@ -134,13 +134,7 @@ public class SettingActivity extends AppCompatActivity implements $_Initializati
             }
         });
 
-        alert_dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // Canceled.
-                System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
 
-            }
-        });
 
         alert_dialog.show();
     }
