@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:layoutDirection="ltr"
-    tools:context=".ui.MainActivity.MainActivity">
+    tools:context=".ui.MainActivity.MainActivity"
+    android:orientation="vertical">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -34,45 +35,53 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/main_tabs_view_page"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/main_tabs_view_page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/main_floating_action_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:background="@color/transparent"
-        app:menu_fab_label=""
-        app:menu_labels_showShadow="true"
-        app:menu_openDirection="up"
-        app:menu_showShadow="true"
-        app:menu_colorNormal="@color/colorPrimary"
-        app:menu_colorPressed="@color/ligth_black"
-        app:menu_colorRipple="@color/colorAccent"
-        app:fab_showAnimation="@anim/fab_scale_up"
-        >
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/main_item_floating_action_menu"
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/main_floating_action_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_label="Create group"
-            android:src="@drawable/group"
-            app:fab_colorNormal="@color/colorPrimary"
-            app:fab_colorPressed="@color/ligth_black"
-            app:fab_colorRipple="@color/colorAccent"
-            app:fab_size="mini"
+            android:layout_margin="10dp"
+            android:layout_gravity="bottom|right"
+            android:background="@color/transparent"
+            app:menu_fab_label=""
+            app:menu_labels_showShadow="true"
+            app:menu_openDirection="up"
+            app:menu_showShadow="true"
+            app:menu_colorNormal="@color/colorPrimary"
+            app:menu_colorPressed="@color/ligth_black"
+            app:menu_colorRipple="@color/colorAccent"
+            app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+            app:menu_fab_show_animation="@anim/fab_scale_down"
 
-            app:fab_showShadow="true"
-            app:fab_showAnimation="@anim/fab_scale_up"/>
-    </com.github.clans.fab.FloatingActionMenu>
+            >
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/main_item_floating_action_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_label="Create group"
+                android:src="@drawable/group"
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/ligth_black"
+                app:fab_colorRipple="@color/colorAccent"
+                app:fab_size="mini"
+                app:fab_showShadow="true"
+                app:fab_showAnimation="@anim/fab_scale_up"
+                />
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+    </FrameLayout>
 
 
-</RelativeLayout>
+
+
+</LinearLayout>

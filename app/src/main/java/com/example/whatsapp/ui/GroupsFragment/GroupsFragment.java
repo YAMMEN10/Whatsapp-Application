@@ -6,14 +6,30 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.whatsapp.R;
+import com.example.whatsapp.Utils.$_InitializationView;
+import com.example.whatsapp.databinding.ChatsItemBinding;
+import com.example.whatsapp.databinding.FragmentGroupsBinding;
+import com.example.whatsapp.model.$_GroupInformation;
+import com.example.whatsapp.ui.GroupsFragment.Adapter.$_GroupsAdapter;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GroupsFragment extends Fragment {
+public class GroupsFragment extends Fragment implements $_InitializationView {
 
+    private FragmentGroupsBinding fragment_group_binding;
+    private ChatsItemBinding chats_item_binding;
+    private $_GroupViewModel group_view_model;
+    private GroupsFragment context;
+    private ArrayList<$_GroupInformation> items;
+    private $_GroupsAdapter group_adapter;
     public GroupsFragment() {
         // Required empty public constructor
     }
@@ -23,8 +39,45 @@ public class GroupsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_groupsfragment, container, false);
+        this.fragment_group_binding = FragmentGroupsBinding.inflate(inflater, container, false);
+        View view = this.fragment_group_binding.getRoot();
+        initializationView();
+        initializationActions();
+
+        return view;
     }
 
-    
+
+    @Override
+    public void initializationView() {
+        this.context = GroupsFragment.this;
+        group_view_model = ViewModelProviders.of(this.context).get($_GroupViewModel.class);
+
+        this.items = new ArrayList<>();
+        this.group_adapter = new $_GroupsAdapter(this.items);
+        this.fragment_group_binding.recyclerViewGroup.setAdapter(this.group_adapter);
+        this.fragment_group_binding.recyclerViewGroup.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        this.group_view_model.getAllGroups();
+    }
+
+    @Override
+    public void initializationActions() {
+        this.group_view_model.getLive_data_groups_set().observe(context, new Observer<Set<$_GroupInformation>>() {
+            @Override
+            public void onChanged(Set<$_GroupInformation> group_information) {
+                if (group_information != null) {
+                    items.clear();
+                    items.addAll(group_information);
+                    group_adapter.notifyDataSetChanged();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        this.fragment_group_binding = null;
+    }
 }

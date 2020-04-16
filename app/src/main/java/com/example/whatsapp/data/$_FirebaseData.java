@@ -65,6 +65,10 @@ public class $_FirebaseData {
     }
 
 
+    public DatabaseReference getAllGroups(){
+        return this.root_database_reference.child("Groups").child(this.firebase_user.getUid());
+    }
+
 
 
 

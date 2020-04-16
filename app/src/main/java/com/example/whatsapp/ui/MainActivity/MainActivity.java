@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
         activity_main_binding.mainTabsViewPage.setAdapter(this.tabs_access_adapter);
         activity_main_binding.mainTapsLayout.setupWithViewPager(activity_main_binding.mainTabsViewPage);
         this.activity_main_binding.mainItemFloatingActionMenu.setOnClickListener(this);
-
     }
 
     @Override

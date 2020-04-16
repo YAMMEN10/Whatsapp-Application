@@ -277,7 +277,6 @@
                         android:paddingBottom="10dp"
                         android:text="Hi, i'm online"
                         android:textAlignment="textStart"
-
                         android:textAllCaps="false"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"
