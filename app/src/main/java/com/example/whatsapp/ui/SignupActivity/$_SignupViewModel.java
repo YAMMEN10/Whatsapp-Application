@@ -25,8 +25,9 @@ public class $_SignupViewModel extends ViewModel {
                         if (task.isSuccessful()) {
                             String uid = task.getResult().getUser().getUid();
                             String email = task.getResult().getUser().getEmail();
-                            $_FirebaseData.getINSTANCE().storeUsers(uid);
                             $_UserModel user_model = new $_UserModel(uid, email,"", "","");
+                            $_FirebaseData.getINSTANCE().storeUsers(user_model);
+
                             live_data_user_model.setValue(user_model);
                         } else {
                             live_data_user_model.setValue(null);

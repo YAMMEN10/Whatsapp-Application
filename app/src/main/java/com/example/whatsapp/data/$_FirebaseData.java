@@ -1,5 +1,6 @@
 package com.example.whatsapp.data;
 
+import com.example.whatsapp.model.$_UserModel;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,8 +29,8 @@ public class $_FirebaseData {
         return this.firebase_auth.signInWithEmailAndPassword(email, password);
     }
 
-    public Task storeUsers(String uid) {
-        return this.root_database_reference.child("Users").child(uid).setValue("");
+    public Task storeUsers($_UserModel user_model) {
+        return this.root_database_reference.child("Users").child(user_model.getId()).setValue(user_model);
     }
 
     public boolean signOutAccount() {
