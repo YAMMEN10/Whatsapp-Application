@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="ltr">
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_gravity="center"
+        android:background="@color/transparent"
+        android:src="@drawable/send_message">
+
+    </androidx.appcompat.widget.AppCompatImageButton>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_weight="10"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:gravity="bottom"
+        app:cardBackgroundColor="@color/colorAccent"
+        app:cardCornerRadius="30sp"
+        android:orientation="horizontal"
+        app:cardElevation="3dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardPreventCornerOverlap="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="0dp"
+                android:layout_weight="12"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:hint="Message..."
+
+                android:textSize="15dp"
+                android:maxLines="4"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                android:overScrollMode="ifContentScrolls"
+                android:padding="15dp"
+                android:layoutDirection="locale"
+                android:textColor="@color/black"
+                android:textColorHint="@color/ligth_black"
+                android:textDirection="ltr"
+                app:endIconMode="clear_text"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="#80EEEEEE"
+                app:startIconCheckable="true"
+                app:startIconTint="@color/transparent"
+                app:startIconTintMode="screen">
+
+
+            </androidx.appcompat.widget.AppCompatEditText>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/main_floating_action_menu"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        app:menu_fab_size="mini"
+        app:menu_icon="@drawable/arrow_up"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/transparent"
+        app:menu_fab_label=""
+        app:menu_labels_showShadow="true"
+        app:menu_openDirection="up"
+        app:menu_showShadow="true"
+        app:menu_colorNormal="@color/colorPrimary"
+        app:menu_colorPressed="@color/ligth_black"
+        app:menu_colorRipple="@color/colorAccent"
+        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        app:menu_fab_show_animation="@anim/fab_scale_down"
+        >
+
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+</LinearLayout>
+

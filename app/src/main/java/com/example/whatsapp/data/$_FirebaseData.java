@@ -1,6 +1,5 @@
 package com.example.whatsapp.data;
 
-import com.example.whatsapp.model.$_UserModel;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,40 +47,31 @@ public class $_FirebaseData {
                 child(user_id);
     }
 
-    public Task<Void> saveUserNameInformation(String username){
+    public Task<Void> saveUserNameInformation(String username) {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).child("name").setValue(username);
     }
 
-    public Task<Void> saveUserStatusInformation(String status){
+    public Task<Void> saveUserStatusInformation(String status) {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).child("status").setValue(status);
     }
 
-    public DatabaseReference getSettingInformation(){
+    public DatabaseReference getSettingInformation() {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid());
     }
 
-    public Task<Void> createGroup(String group_name){
+    public Task<Void> createGroup(String group_name) {
         return this.root_database_reference.child("Groups").child(this.firebase_user.getUid()).child(group_name).setValue("");
     }
 
 
-    public DatabaseReference getAllGroups(){
-        return this.root_database_reference.child("Groups").child(this.firebase_user.getUid());
+    public DatabaseReference getAllGroups() {
+        try {
+            DatabaseReference data_base_reference = this.root_database_reference.child("Groups").child(this.firebase_user.getUid());
+            return data_base_reference;
+        } catch (NullPointerException ex) {
+            return null;
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // Getter and Setter

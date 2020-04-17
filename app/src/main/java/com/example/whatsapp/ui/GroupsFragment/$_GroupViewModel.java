@@ -22,23 +22,27 @@ public class $_GroupViewModel extends ViewModel {
     }
 
     public void getAllGroups(){
-        $_FirebaseData.getINSTANCE().getAllGroups().addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot data) {
-                Iterator iterator = data.getChildren().iterator();
-                Set<$_GroupInformation> set = new HashSet<$_GroupInformation>();
-                while ((iterator.hasNext())){
-                    $_GroupInformation group_information = new $_GroupInformation(((DataSnapshot)iterator.next()).getKey());
-                    set.add(group_information);
+        try {
+            $_FirebaseData.getINSTANCE().getAllGroups().addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot data) {
+                    Iterator iterator = data.getChildren().iterator();
+                    Set<$_GroupInformation> set = new HashSet<$_GroupInformation>();
+                    while ((iterator.hasNext())){
+                        $_GroupInformation group_information = new $_GroupInformation(((DataSnapshot)iterator.next()).getKey());
+                        set.add(group_information);
+                    }
+                    live_data_groups_set.setValue(set);
                 }
-                live_data_groups_set.setValue(set);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }catch (NullPointerException ex){
+            // Do anythings
+        }
     }
 
     public MutableLiveData<Set<$_GroupInformation>> getLive_data_groups_set() {

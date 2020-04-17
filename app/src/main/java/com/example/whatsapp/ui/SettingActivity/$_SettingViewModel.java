@@ -14,11 +14,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-public class SettingViewModel extends ViewModel {
+public class $_SettingViewModel extends ViewModel {
     private MutableLiveData<Pair<Boolean, String>> live_data_save_user_information;
     private MutableLiveData<$_UserModel> live_data_get_user_model;
 
-    public SettingViewModel() {
+    public $_SettingViewModel() {
         this.live_data_save_user_information = new MutableLiveData<>();
         this.live_data_get_user_model = new MutableLiveData<>();
     }

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.whatsapp.Utils.$_InitializationView;
+import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ChatsItemBinding;
 import com.example.whatsapp.databinding.FragmentGroupsBinding;
 import com.example.whatsapp.model.$_GroupInformation;
@@ -52,6 +53,8 @@ public class GroupsFragment extends Fragment implements $_InitializationView {
     public void initializationView() {
         this.context = GroupsFragment.this;
         group_view_model = ViewModelProviders.of(this.context).get($_GroupViewModel.class);
+
+        $_FirebaseData.getINSTANCE().setFirebase_user($_FirebaseData.getINSTANCE().getFirebase_auth().getCurrentUser());
 
         this.items = new ArrayList<>();
         this.group_adapter = new $_GroupsAdapter(this.items);

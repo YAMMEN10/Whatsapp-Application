@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.whatsapp.R;
 import com.example.whatsapp.Utils.$_InitializationView;
 import com.example.whatsapp.Utils.$_Utils;
-import com.example.whatsapp.Utils.InputDialog;
+import com.example.whatsapp.Utils.$_InputDialog;
 import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
 import com.example.whatsapp.databinding.ActivitySettingBinding;
 import com.example.whatsapp.model.$_UserModel;
@@ -21,9 +21,9 @@ import com.example.whatsapp.ui.MainActivity.MainActivity;
 
 public class SettingActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
     private ActivitySettingBinding activity_setting_binding;
-    private SettingViewModel setting_view_model;
+    private $_SettingViewModel setting_view_model;
     private SettingActivity context;
-    private InputDialog alert_dialog;
+    private $_InputDialog alert_dialog;
 
 
     @Override
@@ -41,7 +41,7 @@ public class SettingActivity extends AppCompatActivity implements $_Initializati
         setContentView(view);
         this.context = SettingActivity.this;
 
-        this.setting_view_model = ViewModelProviders.of(this).get(SettingViewModel.class);
+        this.setting_view_model = ViewModelProviders.of(this).get($_SettingViewModel.class);
 
         this.activity_setting_binding.cardViewUsername.setOnClickListener(this);
         this.activity_setting_binding.cardViewStatus.setOnClickListener(this);
@@ -95,7 +95,7 @@ public class SettingActivity extends AppCompatActivity implements $_Initializati
 
 
     public void initialInputDialog(String message) {
-        alert_dialog = new InputDialog(context, message);
+        alert_dialog = new $_InputDialog(context, message);
 
         alert_dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override

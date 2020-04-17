@@ -17,10 +17,11 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.whatsapp.R;
 import com.example.whatsapp.Utils.$_InitializationView;
 import com.example.whatsapp.Utils.$_Utils;
-import com.example.whatsapp.Utils.InputDialog;
+import com.example.whatsapp.Utils.$_InputDialog;
 import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ActivityMainBinding;
+import com.example.whatsapp.ui.GroupChatActivity.GroupChatActivity;
 import com.example.whatsapp.ui.MainActivity.Adapter.$_TabsAccessAdapter;
 import com.example.whatsapp.ui.SettingActivity.SettingActivity;
 import com.example.whatsapp.ui.SigninActivity.SigninActivity;
@@ -28,10 +29,10 @@ import com.example.whatsapp.ui.SignupActivity.SignupActivity;
 
 public class MainActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
     private ActivityMainBinding activity_main_binding;
-    private MainViewModel main_view_model;
+    private $_MainViewModel main_view_model;
     private $_TabsAccessAdapter tabs_access_adapter;
     private MainActivity context;
-    private InputDialog alert_dialog;
+    private $_InputDialog alert_dialog;
 
 
     @Override
@@ -44,11 +45,11 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
     @Override
     protected void onStart() {
         super.onStart();
-        if ($_FirebaseData.getINSTANCE().getFirebase_user() == null) {
-            $_Utils.goToTargetActivity(context, SignupActivity.class);
-        } else {
-            this.main_view_model.checkUsernameIsExist();
-        }
+//        if ($_FirebaseData.getINSTANCE().getFirebase_user() == null) {
+            $_Utils.goToTargetActivity(context, GroupChatActivity.class);
+//        } else {
+//            this.main_view_model.checkUsernameIsExist();
+//        }
 
     }
 
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
 
         $_FirebaseData.getINSTANCE().setFirebase_user($_FirebaseData.getINSTANCE().getFirebase_auth().getCurrentUser());
 
-        this.main_view_model = ViewModelProviders.of(context).get(MainViewModel.class);
+        this.main_view_model = ViewModelProviders.of(context).get($_MainViewModel.class);
 
         setSupportActionBar(this.activity_main_binding.mainAppbar.mainAppbar);
         getSupportActionBar().setTitle("Whatsapp");
@@ -144,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
     }
 
     public void initialInputDialog(String message) {
-        alert_dialog = new InputDialog(context, message);
+        alert_dialog = new $_InputDialog(context, message);
 
         alert_dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override

@@ -13,12 +13,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainViewModel extends ViewModel {
+public class $_MainViewModel extends ViewModel {
     private MutableLiveData<Boolean> live_data_logout;
     private MutableLiveData<Pair<Boolean, String>> live_data_create_group;
     private MutableLiveData<Pair<Boolean, String>> live_data_check_username_is_exist;
 
-    public MainViewModel() {
+    public $_MainViewModel() {
         this.live_data_logout = new MutableLiveData<>();
         this.live_data_create_group = new MutableLiveData<>();
         this.live_data_check_username_is_exist = new MutableLiveData<>();

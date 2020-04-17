@@ -7,10 +7,10 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.whatsapp.R;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class InputDialog extends AlertDialog.Builder {
+public class $_InputDialog extends AlertDialog.Builder {
     private TextInputEditText input;
 
-    public InputDialog(Context context, String message) {
+    public $_InputDialog(Context context, String message) {
         super(context);
         input = new TextInputEditText(context);
         this.setIcon(R.drawable.username);
