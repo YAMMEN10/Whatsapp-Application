@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
     @Override
     protected void onStart() {
         super.onStart();
-//        if ($_FirebaseData.getINSTANCE().getFirebase_user() == null) {
-            $_Utils.goToTargetActivity(context, GroupChatActivity.class);
-//        } else {
-//            this.main_view_model.checkUsernameIsExist();
-//        }
+        if ($_FirebaseData.getINSTANCE().getFirebase_user() == null) {
+            $_Utils.goToTargetActivity(context, SignupActivity.class);
+        } else {
+            this.main_view_model.checkUsernameIsExist();
+        }
 
     }
 

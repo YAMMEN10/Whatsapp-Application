@@ -9,12 +9,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.whatsapp.Utils.$_InitializationView;
+import com.example.whatsapp.Utils.$_Utils;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ChatsItemBinding;
 import com.example.whatsapp.databinding.FragmentGroupsBinding;
 import com.example.whatsapp.model.$_GroupInformation;
+import com.example.whatsapp.ui.GroupChatActivity.GroupChatActivity;
 import com.example.whatsapp.ui.GroupsFragment.Adapter.$_GroupsAdapter;
 
 import java.util.ArrayList;
@@ -31,6 +34,7 @@ public class GroupsFragment extends Fragment implements $_InitializationView {
     private GroupsFragment context;
     private ArrayList<$_GroupInformation> items;
     private $_GroupsAdapter group_adapter;
+
     public GroupsFragment() {
         // Required empty public constructor
     }
@@ -60,6 +64,7 @@ public class GroupsFragment extends Fragment implements $_InitializationView {
         this.group_adapter = new $_GroupsAdapter(this.items);
         this.fragment_group_binding.recyclerViewGroup.setAdapter(this.group_adapter);
         this.fragment_group_binding.recyclerViewGroup.setLayoutManager(new LinearLayoutManager(getContext()));
+        this.group_adapter.setOnItemClickListener(onItemClickListener);
 
         this.group_view_model.getAllGroups();
     }
@@ -76,7 +81,23 @@ public class GroupsFragment extends Fragment implements $_InitializationView {
                 }
             }
         });
+
+
     }
+
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder view_holder = (RecyclerView.ViewHolder) view.getTag();
+            int position = view_holder.getAdapterPosition();
+            $_GroupInformation specific_item = items.get(position);
+            Bundle bundle = new Bundle();
+            bundle.putString("group_name", specific_item.getGroup_name());
+
+            $_Utils.goToTargetActivityWithData(getContext(), GroupChatActivity.class, bundle);
+        }
+    };
+
 
     @Override
     public void onDestroyView() {

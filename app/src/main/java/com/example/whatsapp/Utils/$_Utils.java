@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +17,12 @@ import com.google.android.material.textfield.TextInputEditText;
 public class $_Utils {
     public static void goToTargetActivity(AppCompatActivity source_activity, Class target_activity) {
         Intent intent = new Intent(source_activity, target_activity);
+        source_activity.startActivity(intent);
+    }
+
+    public static void goToTargetActivityWithData(Context source_activity, Class target_activity, Bundle bundle) {
+        Intent intent = new Intent(source_activity, target_activity);
+        intent.putExtra("group_data", bundle);
         source_activity.startActivity(intent);
     }
 
