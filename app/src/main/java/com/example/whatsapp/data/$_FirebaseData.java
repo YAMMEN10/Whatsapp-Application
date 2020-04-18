@@ -1,12 +1,13 @@
 package com.example.whatsapp.data;
 
-import com.example.whatsapp.model.$_UserModel;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Map;
 
 public class $_FirebaseData {
     private FirebaseAuth firebase_auth;
@@ -29,8 +30,8 @@ public class $_FirebaseData {
         return this.firebase_auth.signInWithEmailAndPassword(email, password);
     }
 
-    public Task storeUsers($_UserModel user_model) {
-        return this.root_database_reference.child("Users").child(user_model.getId()).setValue(user_model);
+    public Task<Void> storeUsers(Map user_model) {
+        return this.root_database_reference.child("Users").child(user_model.get("id").toString()).setValue(user_model);
     }
 
     public boolean signOutAccount() {
@@ -61,19 +62,27 @@ public class $_FirebaseData {
     }
 
     public Task<Void> createGroup(String group_name) {
-        return this.root_database_reference.child("Groups").child(this.firebase_user.getUid()).child(group_name).setValue("");
+        return this.root_database_reference.child("Groups").child(group_name).setValue("");
     }
 
 
     public DatabaseReference getAllGroups() {
         try {
-            DatabaseReference data_base_reference = this.root_database_reference.child("Groups").child(this.firebase_user.getUid());
+            DatabaseReference data_base_reference = this.root_database_reference.child("Groups");
             return data_base_reference;
         } catch (NullPointerException ex) {
             return null;
         }
     }
 
+    public DatabaseReference getCurrentUsername() {
+        return this.root_database_reference.child("Users").child(this.firebase_user.getUid());
+    }
+
+    public DatabaseReference saveMessageGroup(String group_name) {
+        String message_key = $_FirebaseData.getINSTANCE().root_database_reference.child("Groups").child(group_name).push().getKey();
+        return $_FirebaseData.getINSTANCE().root_database_reference.child("Groups").child(group_name).child(message_key);
+    }
 
     // Getter and Setter
     public static $_FirebaseData getINSTANCE() {
@@ -102,4 +111,5 @@ public class $_FirebaseData {
     public static void setINSTANCE($_FirebaseData INSTANCE) {
         $_FirebaseData.INSTANCE = INSTANCE;
     }
+
 }

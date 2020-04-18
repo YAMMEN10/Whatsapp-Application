@@ -92,7 +92,7 @@ public class GroupsFragment extends Fragment implements $_InitializationView {
             int position = view_holder.getAdapterPosition();
             $_GroupInformation specific_item = items.get(position);
             Bundle bundle = new Bundle();
-            bundle.putString("group_name", specific_item.getGroup_name());
+            bundle.putString("group_name", specific_item.getName());
 
             $_Utils.goToTargetActivityWithData(getContext(), GroupChatActivity.class, bundle);
         }

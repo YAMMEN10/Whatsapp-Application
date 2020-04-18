@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/main_appbar"
-        layout="@layout/my_appbar_layout">
+        layout="@layout/chat_appbar">
 
     </include>
 
@@ -38,7 +38,9 @@
     </ScrollView>
 
 
-    <include layout="@layout/bottom_chat_view"
+    <include
+        android:id="@+id/send_message_bottom_layout"
+        layout="@layout/bottom_chat_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

@@ -1,9 +1,12 @@
 package com.example.whatsapp.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class $_UserModel {
     private String id;
-    private String name;
     private String email;
+    private String name;
     private String status;
     private String picture;
 
@@ -13,6 +16,16 @@ public class $_UserModel {
         this.name = name;
         this.status = status;
         this.picture = picture;
+    }
+
+    public Map<String, String> map() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("id", this.id);
+        map.put("email", this.email);
+        map.put("name", this.name);
+        map.put("status", this.status);
+        map.put("picture", this.picture);
+        return map;
     }
 
     // Getter and setter

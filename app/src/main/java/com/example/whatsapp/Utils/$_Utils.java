@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.whatsapp.R;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class $_Utils {
     public static void goToTargetActivity(AppCompatActivity source_activity, Class target_activity) {
@@ -46,26 +49,16 @@ public class $_Utils {
         return progress_dialog;
     }
 
-    protected void showInputDialog(Context context) {
-        AlertDialog.Builder alert;
-        final TextInputEditText input;
-        alert = new AlertDialog.Builder(context);
-        input = new TextInputEditText(context);
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                String value = input.getText().toString();
-                // Do something with value!
-            }
-        });
+    public static String getDate(){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simple_date_format = new SimpleDateFormat("MMM dd, yy");
+        return simple_date_format.format(calendar.getTime());
+    }
 
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // Canceled.
-            }
-        });
-        alert.setIcon(R.drawable.username);
-        alert.setMessage("Username");
-        alert.setView(input);
-        alert.show();
+
+    public static String getTime(){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simple_date_format = new SimpleDateFormat("hh:mm a");
+        return simple_date_format.format(calendar.getTime());
     }
 }

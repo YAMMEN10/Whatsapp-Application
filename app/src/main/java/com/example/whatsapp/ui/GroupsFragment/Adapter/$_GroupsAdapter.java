@@ -31,7 +31,7 @@ public class $_GroupsAdapter extends RecyclerView.Adapter<$_GroupsAdapter.$_Grou
 
     @Override
     public void onBindViewHolder(@NonNull $_GroupViewHolder holder, int position) {
-        holder.name.setText(items.get(position).getGroup_name());
+        holder.name.setText(items.get(position).getName());
     }
 
     @Override

@@ -1,17 +1,26 @@
 package com.example.whatsapp.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class $_GroupInformation {
-    private String group_name;
+    private String name;
 
     public $_GroupInformation(String group_name) {
-        this.group_name = group_name;
+        this.name = group_name;
     }
 
-    public String getGroup_name() {
-        return group_name;
+    public Map<String, String> map() {
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("name", this.name);
+        return map;
     }
 
-    public void setGroup_name(String group_name) {
-        this.group_name = group_name;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
