@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 
 public class $_Utils {
@@ -51,14 +52,14 @@ public class $_Utils {
 
     public static String getDate(){
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simple_date_format = new SimpleDateFormat("MMM dd, yy");
+        SimpleDateFormat simple_date_format = new SimpleDateFormat("MMM dd, yy", Locale.ENGLISH);
         return simple_date_format.format(calendar.getTime());
     }
 
 
     public static String getTime(){
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simple_date_format = new SimpleDateFormat("hh:mm a");
+        SimpleDateFormat simple_date_format = new SimpleDateFormat("hh:mm a",Locale.ENGLISH);
         return simple_date_format.format(calendar.getTime());
     }
 }

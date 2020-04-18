@@ -61,6 +61,10 @@ public class $_FirebaseData {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid());
     }
 
+    public DatabaseReference checkGroupIsExist(String group_name){
+        return this.root_database_reference.child("Groups").child(group_name);
+    }
+
     public Task<Void> createGroup(String group_name) {
         return this.root_database_reference.child("Groups").child(group_name).setValue("");
     }
@@ -83,6 +87,14 @@ public class $_FirebaseData {
         String message_key = $_FirebaseData.getINSTANCE().root_database_reference.child("Groups").child(group_name).push().getKey();
         return $_FirebaseData.getINSTANCE().root_database_reference.child("Groups").child(group_name).child(message_key);
     }
+
+    public DatabaseReference getMessageOfGroup(String group_name){
+        return this.root_database_reference.child("Groups").child(group_name);
+    }
+
+
+
+
 
     // Getter and Setter
     public static $_FirebaseData getINSTANCE() {

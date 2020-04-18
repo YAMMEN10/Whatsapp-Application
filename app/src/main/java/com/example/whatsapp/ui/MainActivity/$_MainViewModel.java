@@ -29,14 +29,13 @@ public class $_MainViewModel extends ViewModel {
         this.live_data_logout.setValue(sign_out);
     }
 
-    public void checkUsernameIsExist(){
+    public void checkUsernameIsExist() {
         $_FirebaseData.getINSTANCE().checkUsernameIsExist().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot data_snapshot) {
-                if(data_snapshot.child("name").exists() && !data_snapshot.child("name").getValue(String.class).isEmpty()){
+                if (data_snapshot.child("name").exists() && !data_snapshot.child("name").getValue(String.class).isEmpty()) {
                     live_data_check_username_is_exist.setValue(new Pair<Boolean, String>(true, "Your welcome ..."));
-                }
-                else{
+                } else {
                     live_data_check_username_is_exist.setValue(new Pair<Boolean, String>(false, "First, please fill your information"));
                 }
             }
@@ -48,23 +47,38 @@ public class $_MainViewModel extends ViewModel {
         });
     }
 
-    public void createGroup(final String group_name){
-        $_FirebaseData.getINSTANCE().createGroup(group_name).addOnCompleteListener(new OnCompleteListener<Void>() {
+    public void checkGroupIsExist(final String group_name) {
+        $_FirebaseData.getINSTANCE().checkGroupIsExist(group_name).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    live_data_check_username_is_exist.setValue(new Pair<Boolean, String>(true, "Group "+ group_name +" created successfully"));
-
-                }else{
-                    live_data_check_username_is_exist.setValue(new Pair<Boolean, String>(true, "Group "+ group_name +" unsuccessfully created"));
+            public void onDataChange(@NonNull DataSnapshot data) {
+                if (!data.exists()) {
+                    createGroup(group_name);
+                } else {
+                    live_data_create_group.setValue(new Pair<Boolean, String>(false, "Group " + group_name + " is exist"));
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError data_error) {
+                live_data_create_group.setValue(new Pair<Boolean, String>(false, "Group " + group_name + " is exist"));
+
             }
         });
     }
 
+    public void createGroup(final String group_name) {
+        $_FirebaseData.getINSTANCE().createGroup(group_name).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    live_data_create_group.setValue(new Pair<Boolean, String>(true, "Group " + group_name + " created successfully"));
 
-
-
+                } else {
+                    live_data_create_group.setValue(new Pair<Boolean, String>(true, "Group " + group_name + " unsuccessfully created"));
+                }
+            }
+        });
+    }
 
 
     public MutableLiveData<Boolean> getLive_data_logout() {

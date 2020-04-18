@@ -16,7 +16,14 @@ public class $_MessageModel {
         this.time = time;
     }
 
-    public Map<String, String> map(){
+    public $_MessageModel(Map map) {
+        this.name = map.get("name").toString();
+        this.message = map.get("message").toString();
+        this.date = map.get("date").toString();
+        this.time = map.get("time").toString();
+    }
+
+    public Map<String, String> toMap(){
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("name", this.name);
         map.put("message", this.message);
@@ -24,6 +31,8 @@ public class $_MessageModel {
         map.put("time", this.time);
         return map;
     }
+
+
 
     public String getName() {
         return name;

@@ -103,7 +103,7 @@
                     app:hintAnimationEnabled="true"
                     app:hintTextColor="#80EEEEEE"
                     app:startIconCheckable="true"
-                    app:startIconDrawable="@drawable/lock"
+                    app:startIconDrawable="@drawable/password"
                     app:startIconTint="@color/transparent"
 
                     app:startIconTintMode="screen">

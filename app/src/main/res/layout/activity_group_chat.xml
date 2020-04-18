@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorAccent"
     tools:context=".ui.GroupChatActivity.GroupChatActivity">
 
     <include
         android:id="@+id/main_appbar"
-        layout="@layout/chat_appbar">
+        android:layout_alignParentTop="true"
+        layout="@layout/chat_appbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
 
     </include>
 
@@ -16,14 +22,15 @@
         android:id="@+id/group_chat_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/main_appbar">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:layout_below="@+id/main_appbar"
+        android:layout_above="@id/send_message_bottom_layout"
+        app:layout_constraintBottom_toTopOf="@+id/send_message_bottom_layout"
+        app:layout_constraintTop_toBottomOf="@+id/main_appbar">
+
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/messages_of_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -33,7 +40,6 @@
 
             </androidx.appcompat.widget.AppCompatTextView>
 
-        </LinearLayout>
 
     </ScrollView>
 
@@ -41,9 +47,14 @@
     <include
         android:id="@+id/send_message_bottom_layout"
         layout="@layout/bottom_chat_view"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </RelativeLayout>

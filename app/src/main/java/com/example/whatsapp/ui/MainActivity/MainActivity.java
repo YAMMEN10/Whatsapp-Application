@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
                 boolean not_empty_validation = new $_NotEmptyValidator(alert_dialog.getInput()).validate();
                 if (not_empty_validation) {
                     String group_name = alert_dialog.getInput().getText().toString();
-                    main_view_model.createGroup(group_name);
+                    main_view_model.checkGroupIsExist(group_name);
                 } else {
                     $_Utils.makeToast(context, "Group name is required...", Toast.LENGTH_LONG);
                 }
