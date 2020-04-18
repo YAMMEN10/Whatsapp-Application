@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:layoutDirection="ltr"
-    tools:context=".ui.MainActivity.MainActivity"
+    tools:context=".ui.Activitys.MainActivity.MainActivity"
     android:orientation="vertical">
 
 

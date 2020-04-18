@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.GroupsFragment;
+package com.example.whatsapp.ui.Fragments.GroupsFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,8 +17,8 @@ import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ChatsItemBinding;
 import com.example.whatsapp.databinding.FragmentGroupsBinding;
 import com.example.whatsapp.model.$_GroupInformation;
-import com.example.whatsapp.ui.GroupChatActivity.GroupChatActivity;
-import com.example.whatsapp.ui.GroupsFragment.Adapter.$_GroupsAdapter;
+import com.example.whatsapp.ui.Activitys.GroupChatActivity.GroupChatActivity;
+import com.example.whatsapp.ui.Fragments.GroupsFragment.Adapter.$_GroupsAdapter;
 
 import java.util.ArrayList;
 import java.util.Set;

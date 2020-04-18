@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.SettingActivity;
+package com.example.whatsapp.ui.Activitys.SettingActivity;
 
 import android.util.Pair;
 

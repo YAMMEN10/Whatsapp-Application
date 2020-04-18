@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.ContactsFragment;
+package com.example.whatsapp.ui.Fragments.ContactsFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

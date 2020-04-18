@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.SignupActivity;
+package com.example.whatsapp.ui.Activitys.SigninActivity;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -10,15 +10,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
-public class $_SignupViewModel extends ViewModel {
+public class $_SigninViewModel extends ViewModel {
     private MutableLiveData<$_UserModel> live_data_user_model;
 
-    public $_SignupViewModel() {
+    public $_SigninViewModel() {
         this.live_data_user_model = new MutableLiveData<>();
     }
 
-    public void createAccountByGmail(String email, String password) {
-        $_FirebaseData.getINSTANCE().createAccountByGmail(email, password).
+    public void signinAccountByGmail(String email, String password) {
+        $_FirebaseData.getINSTANCE().signinAccountByGmail(email, password).
                 addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -26,8 +26,6 @@ public class $_SignupViewModel extends ViewModel {
                             String uid = task.getResult().getUser().getUid();
                             String email = task.getResult().getUser().getEmail();
                             $_UserModel user_model = new $_UserModel(uid, email,"", "","");
-                            $_FirebaseData.getINSTANCE().storeUsers(user_model.map());
-
                             live_data_user_model.setValue(user_model);
                         } else {
                             live_data_user_model.setValue(null);

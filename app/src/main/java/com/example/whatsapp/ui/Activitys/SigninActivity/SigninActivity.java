@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.SigninActivity;
+package com.example.whatsapp.ui.Activitys.SigninActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -19,8 +19,9 @@ import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ActivitySigninBinding;
 import com.example.whatsapp.model.$_UserModel;
-import com.example.whatsapp.ui.MainActivity.MainActivity;
-import com.example.whatsapp.ui.SignupActivity.SignupActivity;
+import com.example.whatsapp.ui.Activitys.MainActivity.MainActivity;
+import com.example.whatsapp.ui.Activitys.SigninPhoneNumberActivity.SigninPhoneNumberActivity;
+import com.example.whatsapp.ui.Activitys.SignupActivity.SignupActivity;
 
 public class SigninActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
     private ActivitySigninBinding activity_signin_binding;
@@ -65,6 +66,7 @@ public class SigninActivity extends AppCompatActivity implements $_Initializatio
 
         this.activity_signin_binding.signinSignIn.setOnClickListener(this);
         this.activity_signin_binding.signinSignUp.setOnClickListener(this);
+        this.activity_signin_binding.signinSigninWithMobile.setOnClickListener(this);
     }
 
     @Override
@@ -103,6 +105,8 @@ public class SigninActivity extends AppCompatActivity implements $_Initializatio
             case R.id.signin_sign_up:
                 $_Utils.goToTargetActivity(SigninActivity.this, SignupActivity.class);
                 break;
+            case R.id.signin_signin_with_mobile:
+                $_Utils.goToTargetActivity(context, SigninPhoneNumberActivity.class);
         }
     }
 }

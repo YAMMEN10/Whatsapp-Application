@@ -1,10 +1,9 @@
-package com.example.whatsapp.ui.GroupChatActivity;
+package com.example.whatsapp.ui.Activitys.GroupChatActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.model.$_MessageModel;
@@ -13,10 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 public class $_GroupChatViewModel extends ViewModel {

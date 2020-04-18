@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.MainActivity;
+package com.example.whatsapp.ui.Activitys.MainActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -21,11 +21,10 @@ import com.example.whatsapp.Utils.$_InputDialog;
 import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ActivityMainBinding;
-import com.example.whatsapp.ui.GroupChatActivity.GroupChatActivity;
-import com.example.whatsapp.ui.MainActivity.Adapter.$_TabsAccessAdapter;
-import com.example.whatsapp.ui.SettingActivity.SettingActivity;
-import com.example.whatsapp.ui.SigninActivity.SigninActivity;
-import com.example.whatsapp.ui.SignupActivity.SignupActivity;
+import com.example.whatsapp.ui.Activitys.MainActivity.Adapter.$_TabsAccessAdapter;
+import com.example.whatsapp.ui.Activitys.SettingActivity.SettingActivity;
+import com.example.whatsapp.ui.Activitys.SigninActivity.SigninActivity;
+import com.example.whatsapp.ui.Activitys.SignupActivity.SignupActivity;
 
 public class MainActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
     private ActivityMainBinding activity_main_binding;

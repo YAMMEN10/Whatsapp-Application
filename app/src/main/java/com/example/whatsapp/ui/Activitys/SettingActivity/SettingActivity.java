@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.SettingActivity;
+package com.example.whatsapp.ui.Activitys.SettingActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import com.example.whatsapp.Utils.$_InputDialog;
 import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
 import com.example.whatsapp.databinding.ActivitySettingBinding;
 import com.example.whatsapp.model.$_UserModel;
-import com.example.whatsapp.ui.MainActivity.MainActivity;
+import com.example.whatsapp.ui.Activitys.MainActivity.MainActivity;
 
 public class SettingActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
     private ActivitySettingBinding activity_setting_binding;

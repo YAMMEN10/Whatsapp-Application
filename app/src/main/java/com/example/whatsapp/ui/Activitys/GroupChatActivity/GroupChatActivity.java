@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.GroupChatActivity;
+package com.example.whatsapp.ui.Activitys.GroupChatActivity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,10 +14,6 @@ import com.example.whatsapp.Utils.$_InitializationView;
 import com.example.whatsapp.Utils.$_Utils;
 import com.example.whatsapp.databinding.ActivityGroupChatBinding;
 import com.example.whatsapp.model.$_MessageModel;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class GroupChatActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
     private ActivityGroupChatBinding activity_group_chat_binding;

@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.SignupActivity;
+package com.example.whatsapp.ui.Activitys.SignupActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -19,8 +19,8 @@ import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ActivitySignupBinding;
 import com.example.whatsapp.model.$_UserModel;
-import com.example.whatsapp.ui.MainActivity.MainActivity;
-import com.example.whatsapp.ui.SigninActivity.SigninActivity;
+import com.example.whatsapp.ui.Activitys.MainActivity.MainActivity;
+import com.example.whatsapp.ui.Activitys.SigninActivity.SigninActivity;
 
 public class SignupActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
     private ActivitySignupBinding activity_signup_binding;

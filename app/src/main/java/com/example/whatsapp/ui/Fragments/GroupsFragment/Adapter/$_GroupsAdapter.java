@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.GroupsFragment.Adapter;
+package com.example.whatsapp.ui.Fragments.GroupsFragment.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

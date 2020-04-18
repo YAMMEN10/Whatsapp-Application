@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorAccent"
-    tools:context=".ui.GroupChatActivity.GroupChatActivity">
+    tools:context=".ui.Activitys.GroupChatActivity.GroupChatActivity">
 
     <include
         android:id="@+id/main_appbar"

@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.GroupChatActivity.GroupChatActivity"></activity>
-        <activity android:name=".ui.SettingActivity.SettingActivity" />
-        <activity android:name=".ui.SignupActivity.SignupActivity" />
-        <activity android:name=".ui.SigninActivity.SigninActivity" />
-        <activity android:name=".ui.MainActivity.MainActivity">
+        <activity android:name=".ui.Activitys.SigninPhoneNumberActivity.SigninPhoneNumberActivity"></activity>
+        <activity android:name=".ui.Activitys.GroupChatActivity.GroupChatActivity" />
+        <activity android:name=".ui.Activitys.SettingActivity.SettingActivity" />
+        <activity android:name=".ui.Activitys.SignupActivity.SignupActivity" />
+        <activity android:name=".ui.Activitys.SigninActivity.SigninActivity" />
+        <activity android:name=".ui.Activitys.MainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

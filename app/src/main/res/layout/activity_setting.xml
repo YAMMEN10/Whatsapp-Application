@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context=".ui.SettingActivity.SettingActivity">
+    tools:context=".ui.Activitys.SettingActivity.SettingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,6 +29,10 @@ public class $_FirebaseData {
 
     public Task<AuthResult> signinAccountByGmail(String email, String password) {
         return this.firebase_auth.signInWithEmailAndPassword(email, password);
+    }
+
+    public Task<AuthResult> signInWithPhoneAuthCredential(PhoneAuthCredential phone_auth_credential){
+        return this.firebase_auth.signInWithCredential(phone_auth_credential);
     }
 
     public Task<Void> storeUsers(Map user_model) {

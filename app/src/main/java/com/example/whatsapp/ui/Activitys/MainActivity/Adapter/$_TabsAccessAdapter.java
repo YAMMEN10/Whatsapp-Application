@@ -1,13 +1,13 @@
-package com.example.whatsapp.ui.MainActivity.Adapter;
+package com.example.whatsapp.ui.Activitys.MainActivity.Adapter;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.whatsapp.ui.ChatFragment.ChatsFragment;
-import com.example.whatsapp.ui.ContactsFragment.ContactsFragment;
-import com.example.whatsapp.ui.GroupsFragment.GroupsFragment;
+import com.example.whatsapp.ui.Fragments.ChatFragment.ChatsFragment;
+import com.example.whatsapp.ui.Fragments.ContactsFragment.ContactsFragment;
+import com.example.whatsapp.ui.Fragments.GroupsFragment.GroupsFragment;
 
 public class $_TabsAccessAdapter extends FragmentPagerAdapter {
     private Fragment main_page_fragment[];

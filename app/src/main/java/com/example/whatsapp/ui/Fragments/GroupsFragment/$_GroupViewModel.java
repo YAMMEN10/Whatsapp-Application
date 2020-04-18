@@ -1,4 +1,4 @@
-package com.example.whatsapp.ui.GroupsFragment;
+package com.example.whatsapp.ui.Fragments.GroupsFragment;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
