@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.whatsapp.data.$_FirebaseData;
+import com.example.whatsapp.model.$_UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -20,21 +21,24 @@ import java.util.concurrent.TimeUnit;
 public class SigninPhoneNumberViewModel extends ViewModel {
     private MutableLiveData<Pair<Integer, String>> live_data_signin_phone_number;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
-    private String mVerificationId;
-    private PhoneAuthProvider.ForceResendingToken mResendToken;
+//    private String mVerificationId;
+//    private PhoneAuthProvider.ForceResendingToken mResendToken;
+    private String phone_number;
 
 
     public SigninPhoneNumberViewModel() {
         this.live_data_signin_phone_number = new MutableLiveData<>();
         this.callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
-            public void onVerificationCompleted(PhoneAuthCredential phone_auth_credential) {
+            public void onVerificationCompleted(final PhoneAuthCredential phone_auth_credential) {
                 $_FirebaseData.getINSTANCE().signInWithPhoneAuthCredential(phone_auth_credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                            System.out.println(task.getResult().getUser().getUid());
+                            $_UserModel user_model = new $_UserModel(task.getResult().getUser().getUid(), phone_number, "", "", "");
+
+                            $_FirebaseData.getINSTANCE().storeUsers(user_model.map());
+
                             live_data_signin_phone_number.setValue(new Pair<Integer, String>(1, "Congratulations, you're logged in Successfully"));
                         } else {
                             live_data_signin_phone_number.setValue(new Pair<Integer, String>(-1, "Error " + task.getException().getMessage()));
@@ -50,8 +54,8 @@ public class SigninPhoneNumberViewModel extends ViewModel {
 
             @Override
             public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
-                mVerificationId = verificationId;
-                mResendToken = token;
+//                mVerificationId = verificationId;
+//                mResendToken = token;
                 live_data_signin_phone_number.setValue(new Pair<Integer, String>(2, "Verification code has been sent, please check and verify..."));
 
             }
@@ -59,6 +63,7 @@ public class SigninPhoneNumberViewModel extends ViewModel {
     }
 
     public void signinWithPhoneNumber(Activity context, String phone_number) {
+        this.phone_number = phone_number;
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phone_number,
                 60,

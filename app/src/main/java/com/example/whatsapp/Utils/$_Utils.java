@@ -41,11 +41,11 @@ public class $_Utils {
         Toast.makeText(context, message, length).show();
     }
 
-    public static ProgressDialog makeProgressDialog(Context context) {
+    public static ProgressDialog makeProgressDialog(Context context,String title, String message) {
         ProgressDialog progress_dialog;
         progress_dialog = new ProgressDialog(context);
-        progress_dialog.setTitle("Creating account");
-        progress_dialog.setMessage("Please wait, while creating new account for you...");
+        progress_dialog.setTitle(title);
+        progress_dialog.setMessage(message);
         progress_dialog.setCanceledOnTouchOutside(true);
         return progress_dialog;
     }

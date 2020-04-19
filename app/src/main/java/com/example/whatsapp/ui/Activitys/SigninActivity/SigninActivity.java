@@ -62,7 +62,7 @@ public class SigninActivity extends AppCompatActivity implements $_Initializatio
 
         this.signin_view_model = ViewModelProviders.of(context).get($_SigninViewModel.class);
 
-        this.progress_dialog = $_Utils.makeProgressDialog(context);
+        this.progress_dialog = $_Utils.makeProgressDialog(context, "Signing in account", "Please wait, while signing in account for you...");
 
         this.activity_signin_binding.signinSignIn.setOnClickListener(this);
         this.activity_signin_binding.signinSignUp.setOnClickListener(this);

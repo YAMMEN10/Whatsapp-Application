@@ -38,7 +38,8 @@ public class SigninPhoneNumberActivity extends AppCompatActivity implements $_In
         setContentView(view);
         this.context = SigninPhoneNumberActivity.this;
         this.signin_phone_number_view_model = ViewModelProviders.of(context).get(SigninPhoneNumberViewModel.class);
-        this.progress_dialog = $_Utils.makeProgressDialog(context);
+        this.progress_dialog = $_Utils.makeProgressDialog(context, "Signing account by mobile number", "Please wait, while signing new account by mobile number for you...");
+
 
         this.activity_signin_phone_number_binding.signinSigninPhoneSignin.setOnClickListener(this);
         this.activity_signin_phone_number_binding.signinPhoneNumberVerifyCode.setOnClickListener(this);
@@ -56,6 +57,7 @@ public class SigninPhoneNumberActivity extends AppCompatActivity implements $_In
                     $_Utils.goToTargetActivity(context, MainActivity.class);
                 }
                 if(data.first == 2){
+                    progress_dialog = $_Utils.makeProgressDialog(context, "Verification mobile number", "Please wait, while verification mobile number for you...");
                     progress_dialog.show();
                 }
             }

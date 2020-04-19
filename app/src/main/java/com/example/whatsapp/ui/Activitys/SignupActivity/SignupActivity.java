@@ -58,7 +58,7 @@ public class SignupActivity extends AppCompatActivity implements $_Initializatio
 
         this.signup_view_model = ViewModelProviders.of(this.context).get($_SignupViewModel.class);
 
-        this.progress_dialog = $_Utils.makeProgressDialog(context);
+        this.progress_dialog = $_Utils.makeProgressDialog(context, "Signing up account", "Please wait, while signing up new account for you...");
 
         this.activity_signup_binding.signupSignup.setOnClickListener(this);
         this.activity_signup_binding.signupSignin.setOnClickListener(this);
