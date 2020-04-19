@@ -8,14 +8,14 @@ public class $_UserModel {
     private String email;
     private String name;
     private String status;
-    private String picture;
+    private String image;
 
-    public $_UserModel(String id, String email, String name, String status, String picture) {
+    public $_UserModel(String id, String email, String name, String status, String image) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.status = status;
-        this.picture = picture;
+        this.image = image;
     }
 
     public Map<String, String> map() {
@@ -24,7 +24,7 @@ public class $_UserModel {
         map.put("email", this.email);
         map.put("name", this.name);
         map.put("status", this.status);
-        map.put("picture", this.picture);
+        map.put("image", this.image);
         return map;
     }
 
@@ -61,11 +61,11 @@ public class $_UserModel {
         this.status = status;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImage() {
+        return image;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

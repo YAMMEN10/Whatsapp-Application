@@ -39,23 +39,44 @@
 
             </LinearLayout>
 
-
-            <xyz.schwaab.avvylib.AvatarView
-                android:id="@+id/profile_photo"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/default_photo"
-                app:avvy_border_color="#262B33"
-                app:avvy_border_highlight_color="@color/colorAccent"
-                app:avvy_border_thickness="5dp"
-                app:avvy_border_thickness_highlight="0dp"
-                app:avvy_distance_to_border="5dp"
-                app:avvy_highlighted="true"
-                app:avvy_loading_arches="5"
-                app:avvy_loading_arches_degree_area="90"
-                app:avvy_middle_color="@color/colorAccent" />
+                android:layout_centerVertical="true">
+                <xyz.schwaab.avvylib.AvatarView
+                    android:id="@+id/profile_image"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+
+                    android:src="@drawable/default_image"
+                    app:avvy_border_color="#262B33"
+                    app:avvy_border_highlight_color="@color/colorAccent"
+                    app:avvy_border_thickness="5dp"
+                    app:avvy_border_thickness_highlight="0dp"
+                    app:avvy_distance_to_border="5dp"
+                    app:avvy_highlighted="true"
+                    app:avvy_loading_arches="5"
+                    app:avvy_loading_arches_degree_area="90"
+                    app:avvy_middle_color="@color/colorAccent" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/profile_image_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    app:fab_label="Create group"
+                    android:src="@drawable/image"
+                    app:fab_colorNormal="@color/colorPrimary"
+                    app:fab_colorPressed="@color/ligth_black"
+                    app:fab_colorRipple="@color/colorAccent"
+                    app:fab_size="normal"
+                    app:fab_showShadow="true"
+                    app:fab_showAnimation="@anim/fab_scale_up"
+                    />
+
+
+            </FrameLayout>
 
 
         </RelativeLayout>
@@ -296,55 +317,3 @@
 </ScrollView>
 
 
-    <!--        <com.google.android.material.textfield.TextInputLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginLeft="30dp"-->
-    <!--            android:layout_marginTop="-60dp"-->
-    <!--            android:layout_marginRight="30dp"-->
-    <!--            android:hint="Username"-->
-    <!--            android:layoutDirection="ltr"-->
-    <!--            android:textColorHint="@color/ligth_black"-->
-    <!--            android:textDirection="ltr"-->
-    <!--            app:endIconMode="clear_text"-->
-    <!--            app:startIconCheckable="true"-->
-    <!--            app:startIconDrawable="@drawable/username"-->
-    <!--            app:startIconTint="@color/transparent"-->
-    <!--            app:startIconTintMode="screen"-->
-
-    <!--            >-->
-
-    <!--            <com.google.android.material.textfield.TextInputEditText-->
-    <!--                android:id="@+id/profile_input_username"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:background="@color/transparent"-->
-    <!--                android:textSize="15dp" />-->
-
-    <!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-    <!--        <com.google.android.material.textfield.TextInputLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginLeft="30dp"-->
-    <!--            android:layout_marginTop="20dp"-->
-    <!--            android:layout_marginRight="30dp"-->
-    <!--            android:hint="Status"-->
-    <!--            android:layoutDirection="ltr"-->
-    <!--            android:textColorHint="@color/ligth_black"-->
-    <!--            android:textDirection="ltr"-->
-    <!--            app:endIconMode="clear_text"-->
-    <!--            app:startIconCheckable="true"-->
-    <!--            app:startIconDrawable="@drawable/status"-->
-    <!--            app:startIconTint="@color/transparent"-->
-    <!--            app:startIconTintMode="screen">-->
-
-    <!--            <com.google.android.material.textfield.TextInputEditText-->
-    <!--                android:id="@+id/profile_input_status"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:background="@color/transparent"-->
-    <!--                android:textSize="15dp"-->
-    <!--                />-->
-
-    <!--        </com.google.android.material.textfield.TextInputLayout>-->

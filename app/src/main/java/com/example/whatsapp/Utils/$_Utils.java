@@ -56,10 +56,15 @@ public class $_Utils {
         return simple_date_format.format(calendar.getTime());
     }
 
-
     public static String getTime(){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simple_date_format = new SimpleDateFormat("hh:mm a",Locale.ENGLISH);
         return simple_date_format.format(calendar.getTime());
+    }
+
+    public static void openGallery(AppCompatActivity activity, int SELECT_IMAGE){
+        Intent image_picker_intent = new Intent(Intent.ACTION_PICK);
+        image_picker_intent.setType("image/*");
+        activity.startActivityForResult(image_picker_intent, SELECT_IMAGE);
     }
 }

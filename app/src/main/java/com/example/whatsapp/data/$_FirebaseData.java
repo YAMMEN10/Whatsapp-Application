@@ -1,5 +1,10 @@
 package com.example.whatsapp.data;
 
+import android.net.Uri;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -7,6 +12,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.Map;
 
@@ -14,11 +22,13 @@ public class $_FirebaseData {
     private FirebaseAuth firebase_auth;
     private FirebaseUser firebase_user;
     private DatabaseReference root_database_reference;
+    private StorageReference user_profile_image_reference;
     private static $_FirebaseData INSTANCE;
 
     public $_FirebaseData() {
         this.firebase_auth = FirebaseAuth.getInstance();
         this.root_database_reference = FirebaseDatabase.getInstance().getReference();
+        this.user_profile_image_reference = FirebaseStorage.getInstance().getReference().child("Profile Images's");
         this.firebase_user = null;
     }
 
@@ -54,12 +64,36 @@ public class $_FirebaseData {
                 child(user_id);
     }
 
-    public Task<Void> saveUserNameInformation(String username) {
+    public Task<Void> saveUserName(String username) {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).child("name").setValue(username);
     }
 
-    public Task<Void> saveUserStatusInformation(String status) {
+    public Task<Void> saveUserStatus(String status) {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).child("status").setValue(status);
+    }
+
+    public Task<Void> saveUserImage(String image) {
+        return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).child("image").setValue(image);
+    }
+
+    public Task<Uri> saveUserImageToStorage(Uri image){
+        final StorageReference user_image_reference = this.user_profile_image_reference.child("Profile Images's").child(this.firebase_user.getUid() + ".jpg");
+
+        return user_image_reference.putFile(image).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+
+                // Continue with the task to get the download URL
+                return user_image_reference.getDownloadUrl();
+            }
+        });
+
+
+
+
     }
 
     public DatabaseReference getSettingInformation() {
@@ -73,7 +107,6 @@ public class $_FirebaseData {
     public Task<Void> createGroup(String group_name) {
         return this.root_database_reference.child("Groups").child(group_name).setValue("");
     }
-
 
     public DatabaseReference getAllGroups() {
         try {
@@ -96,6 +129,7 @@ public class $_FirebaseData {
     public DatabaseReference getMessageOfGroup(String group_name){
         return this.root_database_reference.child("Groups").child(group_name);
     }
+
 
 
 

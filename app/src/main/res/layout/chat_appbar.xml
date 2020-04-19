@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <xyz.schwaab.avvylib.AvatarView
-            android:id="@+id/chat_photo"
+            android:id="@+id/chat_image"
             android:layout_width="0dp"
             android:layout_weight="1"
             app:avvy_border_highlight_color_end="@color/colorAccent"
             app:avvy_border_color_end="@color/colorAccent"
             android:layout_height="50dp"
-            android:src="@drawable/default_photo"
+            android:src="@drawable/default_image"
             app:avvy_border_color="#262B33"
             app:avvy_distance_to_border="0dp"
             app:avvy_highlighted="true"
