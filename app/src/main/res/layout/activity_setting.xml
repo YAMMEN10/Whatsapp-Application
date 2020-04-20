@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <LinearLayout
                 android:id="@+id/background"
                 android:layout_width="match_parent"
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true">
+
                 <xyz.schwaab.avvylib.AvatarView
                     android:id="@+id/profile_image"
                     android:layout_width="250dp"
@@ -65,19 +67,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|right"
-                    app:fab_label="Create group"
                     android:src="@drawable/image"
                     app:fab_colorNormal="@color/colorPrimary"
                     app:fab_colorPressed="@color/ligth_black"
                     app:fab_colorRipple="@color/colorAccent"
-                    app:fab_size="normal"
-                    app:fab_showShadow="true"
+                    app:fab_label="Create group"
                     app:fab_showAnimation="@anim/fab_scale_up"
-                    />
+                    app:fab_showShadow="true"
+                    app:fab_size="normal" />
 
 
             </FrameLayout>
 
+            <include
+                android:id="@+id/main_appbar"
+                layout="@layout/setting_appbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </RelativeLayout>
 

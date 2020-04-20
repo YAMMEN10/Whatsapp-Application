@@ -21,6 +21,7 @@ import com.example.whatsapp.Utils.$_InputDialog;
 import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ActivityMainBinding;
+import com.example.whatsapp.ui.Activitys.FindFriendActivity.FindFriendActivity;
 import com.example.whatsapp.ui.Activitys.MainActivity.Adapter.$_TabsAccessAdapter;
 import com.example.whatsapp.ui.Activitys.SettingActivity.SettingActivity;
 import com.example.whatsapp.ui.Activitys.SigninActivity.SigninActivity;
@@ -122,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
 
         switch (item.getItemId()) {
             case R.id.main_find_friend_option:
+                $_Utils.goToTargetActivity(context, FindFriendActivity.class);
+
                 break;
             case R.id.main_settings_option:
                 $_Utils.goToTargetActivity(context, SettingActivity.class);

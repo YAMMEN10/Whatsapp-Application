@@ -54,6 +54,11 @@ public class SettingActivity extends AppCompatActivity implements $_Initializati
 
         this.progress_dialog = $_Utils.makeProgressDialog(context, "Uploading image", "Please wait, while upload image for you...");
 
+        setSupportActionBar(this.activity_setting_binding.mainAppbar.mainAppbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Setting");
+
         this.activity_setting_binding.cardViewUsername.setOnClickListener(this);
         this.activity_setting_binding.cardViewStatus.setOnClickListener(this);
         this.activity_setting_binding.profileImageSelect.setOnClickListener(this);
