@@ -35,9 +35,9 @@ public class SigninPhoneNumberViewModel extends ViewModel {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            $_UserModel user_model = new $_UserModel(task.getResult().getUser().getUid(), phone_number, "", "", "");
-
-                            $_FirebaseData.getINSTANCE().storeUsers(user_model.map());
+//                            $_UserModel user_model = new $_UserModel(task.getResult().getUser().getUid(), phone_number, "", "", "");
+//
+//                            $_FirebaseData.getINSTANCE().storeUsers(user_model.map());
 
                             live_data_signin_phone_number.setValue(new Pair<Integer, String>(1, "Congratulations, you're logged in Successfully"));
                         } else {
@@ -73,24 +73,16 @@ public class SigninPhoneNumberViewModel extends ViewModel {
         );
     }
 
-    public void verificationCode(String code){
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
-        $_FirebaseData.getINSTANCE().signInWithPhoneAuthCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    $_UserModel user_model = new $_UserModel(task.getResult().getUser().getUid(), phone_number, "", "", "");
-
-                    $_FirebaseData.getINSTANCE().storeUsers(user_model.map());
-                    live_data_signin_phone_number.setValue(new Pair<Integer, String>(1, "Congratulations, you're logged in Successfully"));
-                } else {
-                    live_data_signin_phone_number.setValue(new Pair<Integer, String>(-1, "Error " + task.getException().getMessage()));
-                }
-            }
-        });
-    }
 
     public MutableLiveData<Pair<Integer, String>> getLive_data_signin_phone_number() {
         return live_data_signin_phone_number;
+    }
+
+    public String getmVerificationId() {
+        return mVerificationId;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
     }
 }

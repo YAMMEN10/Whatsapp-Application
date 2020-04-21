@@ -16,6 +16,7 @@ import com.example.whatsapp.Utils.$_Utils;
 import com.example.whatsapp.Utils.Validation.$_NotEmptyValidator;
 import com.example.whatsapp.databinding.ActivitySigninPhoneNumberBinding;
 import com.example.whatsapp.ui.Activitys.MainActivity.MainActivity;
+import com.example.whatsapp.ui.Activitys.VerificationCodeActivity.VerificationCodeActivity;
 
 public class SigninPhoneNumberActivity extends AppCompatActivity implements $_InitializationView, View.OnClickListener {
     private SigninPhoneNumberActivity context;
@@ -42,7 +43,6 @@ public class SigninPhoneNumberActivity extends AppCompatActivity implements $_In
 
 
         this.activity_signin_phone_number_binding.signinSigninPhoneSignin.setOnClickListener(this);
-//        this.activity_signin_phone_number_binding.signinPhoneNumberVerifyCode.setOnClickListener(this);
 
     }
 
@@ -57,8 +57,11 @@ public class SigninPhoneNumberActivity extends AppCompatActivity implements $_In
                     $_Utils.goToTargetActivity(context, MainActivity.class);
                 }
                 if(data.first == 2){
-//                    progress_dialog = $_Utils.makeProgressDialog(context, "Verification mobile number", "Please wait, while verification mobile number for you...");
-//                    progress_dialog.show();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("phone number", signin_phone_number_view_model.getPhone_number());
+                    bundle.putString("my verification id", signin_phone_number_view_model.getmVerificationId());
+                    $_Utils.goToTargetActivityWithData(context, VerificationCodeActivity.class, bundle);
+
                 }
             }
         });
@@ -76,14 +79,7 @@ public class SigninPhoneNumberActivity extends AppCompatActivity implements $_In
 
                 }
                 break;
-            case R.id.signin_phone_number_verify_code:
-                boolean not_empty_validate_verification_code = new $_NotEmptyValidator(activity_signin_phone_number_binding.signinPhoneNumber).validate();
-                if(not_empty_validate_verification_code){
-//                    signin_phone_number_view_model.verificationCode(activity_signin_phone_number_binding.signinPhoneVerificationCode.getText().toString());
-                    progress_dialog.show();
-                }else{
 
-                }
 
         }
     }

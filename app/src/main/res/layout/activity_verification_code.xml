@@ -1,56 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.Activitys.VerificationCodeActivity.VerificationCodeActivity">
+    android:layout_height="wrap_content"
+    tools:context=".ui.Activitys.SignupActivity.SignupActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
+
+    <RelativeLayout
+        android:id="@+id/signin_content_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/inputs"
-        android:hint="@string/password"
-        android:layoutDirection="ltr"
-        android:textColor="#fff"
-        android:textColorHint="#80EEEEEE"
-        android:textDirection="ltr"
-        app:boxBackgroundColor="@color/transparent"
-        app:boxBackgroundMode="filled"
-        app:endIconMode="clear_text"
-        app:hintAnimationEnabled="true"
-        app:hintTextColor="#80EEEEEE"
-        app:startIconCheckable="true"
-        app:startIconDrawable="@drawable/verify_phone_code"
-        app:startIconTint="@color/transparent"
+        android:layout_height="wrap_content">
 
-        app:startIconTintMode="screen">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/signin_phone_verification_code"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:scaleType="centerCrop"
+                android:src="@drawable/splash2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="?actionBarSize"
+            android:layout_marginBottom="20dp"
+            android:text="@string/hello_there_nwelcome_to_you"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:inputType="numberSigned"
-            android:textColor="@color/colorWhite"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_verification_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/inputs"
+                android:hint="Code"
+                android:layoutDirection="ltr"
+                android:textColor="#fff"
+                android:textColorHint="#80EEEEEE"
+                android:textDirection="ltr"
+                app:boxBackgroundColor="@color/transparent"
+                app:boxBackgroundMode="filled"
+                app:endIconMode="clear_text"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="#80EEEEEE"
+                app:startIconCheckable="true"
+                app:startIconDrawable="@drawable/verify_phone_code"
+                app:startIconTint="@color/transparent"
 
-    </com.google.android.material.textfield.TextInputLayout>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/signin_phone_number_verify_code"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/signin_phone_verification_code"
-        android:background="@drawable/solid_buttons"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
-        android:text="Verify Code"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        />
-</RelativeLayout>
+                app:startIconTintMode="screen">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signin_phone_add_verification_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:inputType="numberSigned"
+                    android:textColor="@color/colorWhite"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signin_phone_number_verify_code"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/solid_buttons"
+                android:layout_below="@+id/add_verification_code"
+                android:paddingLeft="50dp"
+                android:layout_centerHorizontal="true"
+                android:paddingRight="50dp"
+                android:text="Verify Code"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

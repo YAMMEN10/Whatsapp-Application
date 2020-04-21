@@ -46,7 +46,7 @@ public class GroupChatActivity extends AppCompatActivity implements $_Initializa
         this.group_chat_view_model.getCurrentUsername();
 
         setSupportActionBar(this.activity_group_chat_binding.mainAppbar.mainAppbar);
-        this.group_name = getIntent().getExtras().getBundle("group_data").getString("group_name");
+        this.group_name = getIntent().getExtras().getBundle("data").getString("group_name");
 
         activity_group_chat_binding.sendMessageBottomLayout.bottomSendMessageSendMessage.setOnClickListener(this);
     }

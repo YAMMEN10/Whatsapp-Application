@@ -26,7 +26,7 @@ public class $_Utils {
 
     public static void goToTargetActivityWithData(Context source_activity, Class target_activity, Bundle bundle) {
         Intent intent = new Intent(source_activity, target_activity);
-        intent.putExtra("group_data", bundle);
+        intent.putExtra("data", bundle);
         source_activity.startActivity(intent);
     }
 
