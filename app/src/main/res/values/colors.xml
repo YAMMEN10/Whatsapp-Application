@@ -7,4 +7,5 @@
     <color name="transparent">#00000000</color>
     <color name="black">#D5000000</color>
     <color name="ligth_black">#85000000</color>
+    <color name="very_ligth_black">#4F000000</color>
 </resources>

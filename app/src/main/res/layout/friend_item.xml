@@ -4,33 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/transparent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:layoutDirection="ltr">
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <xyz.schwaab.avvylib.AvatarView
-            android:id="@+id/profile_image"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:id="@+id/find_friend_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/default_image"
             app:avvy_border_color="#262B33"
-            app:avvy_border_highlight_color="@color/colorAccent"
-            app:avvy_border_thickness="5dp"
+            app:avvy_border_highlight_color="@color/transparent"
+            app:avvy_border_thickness="0dp"
             app:avvy_border_thickness_highlight="0dp"
-            app:avvy_distance_to_border="5dp"
+            app:avvy_distance_to_border="0dp"
             app:avvy_highlighted="true"
             app:avvy_loading_arches="5"
             app:avvy_loading_arches_degree_area="90"
             app:avvy_middle_color="@color/transparent" />
 
         <xyz.schwaab.avvylib.AvatarView
-            android:id="@+id/profile_online"
+            android:id="@+id/find_friend_online"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_gravity="bottom|right"
-            android:layout_margin="10dp"
             android:src="@drawable/online"
             app:avvy_border_color="#262B33"
             app:avvy_border_highlight_color="@color/colorAccent"
@@ -49,23 +51,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="top"
-            android:layout_weight="3"
-            android:layoutDirection="ltr"
-            android:orientation="horizontal">
-
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
+                android:id="@+id/find_friend_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
                 android:ellipsize="end"
-                android:gravity="start"
+                android:gravity="center|start"
                 android:maxLines="1"
-                android:padding="10dp"
+                android:paddingLeft="10dp"
                 android:text="Username"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
@@ -76,42 +70,14 @@
 
             </androidx.appcompat.widget.AppCompatTextView>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:gravity="start"
-                android:maxLines="1"
-                android:padding="10dp"
-                android:text="12:30"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-                android:textDirection="ltr"
-                android:textSize="12dp">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="bottom"
-            android:layout_weight="2"
-            android:gravity="bottom"
-            android:orientation="horizontal">
-
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/message"
+                android:id="@+id/find_friend_status"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
                 android:ellipsize="end"
-                android:gravity="start|top"
+                android:gravity="center|start"
                 android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:text="tttttgghgsdjflksjdfijsadfjskldfj"
@@ -123,9 +89,9 @@
                 android:textSize="12dp" />
 
 
-        </LinearLayout>
 
 
     </LinearLayout>
+
 
 </LinearLayout>

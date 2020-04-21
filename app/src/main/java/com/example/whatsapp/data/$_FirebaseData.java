@@ -163,4 +163,11 @@ public class $_FirebaseData {
         $_FirebaseData.INSTANCE = INSTANCE;
     }
 
+    public DatabaseReference getRoot_database_reference() {
+        return root_database_reference;
+    }
+
+    public void setRoot_database_reference(DatabaseReference root_database_reference) {
+        this.root_database_reference = root_database_reference;
+    }
 }

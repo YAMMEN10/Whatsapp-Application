@@ -9,15 +9,15 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.whatsapp.R;
-import com.example.whatsapp.model.$_GroupInformation;
+import com.example.whatsapp.model.$_GroupInformationModel;
 
 import java.util.ArrayList;
 
 public class $_GroupsAdapter extends RecyclerView.Adapter<$_GroupsAdapter.$_GroupViewHolder> {
-    private ArrayList<$_GroupInformation> items;
+    private ArrayList<$_GroupInformationModel> items;
     private View.OnClickListener mOnItemClickListener;
 
-    public $_GroupsAdapter(ArrayList<$_GroupInformation> items) {
+    public $_GroupsAdapter(ArrayList<$_GroupInformationModel> items) {
         this.items = items;
 
     }

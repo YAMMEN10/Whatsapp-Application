@@ -3,10 +3,10 @@ package com.example.whatsapp.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class $_GroupInformation {
+public class $_GroupInformationModel {
     private String name;
 
-    public $_GroupInformation(String group_name) {
+    public $_GroupInformationModel(String group_name) {
         this.name = group_name;
     }
 

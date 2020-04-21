@@ -21,8 +21,8 @@ import java.util.concurrent.TimeUnit;
 public class SigninPhoneNumberViewModel extends ViewModel {
     private MutableLiveData<Pair<Integer, String>> live_data_signin_phone_number;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
-//    private String mVerificationId;
-//    private PhoneAuthProvider.ForceResendingToken mResendToken;
+    private String mVerificationId;
+    private PhoneAuthProvider.ForceResendingToken mResendToken;
     private String phone_number;
 
 
@@ -54,8 +54,8 @@ public class SigninPhoneNumberViewModel extends ViewModel {
 
             @Override
             public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
-//                mVerificationId = verificationId;
-//                mResendToken = token;
+                mVerificationId = verificationId;
+                mResendToken = token;
                 live_data_signin_phone_number.setValue(new Pair<Integer, String>(2, "Verification code has been sent, please check and verify..."));
 
             }
@@ -73,19 +73,22 @@ public class SigninPhoneNumberViewModel extends ViewModel {
         );
     }
 
-//    public void verificationCode(String code){
-//        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
-//        $_FirebaseData.getINSTANCE().signInWithPhoneAuthCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if (task.isSuccessful()) {
-//                    live_data_signin_phone_number.setValue(new Pair<Integer, String>(1, "1111Congratulations, you're logged in Successfully"));
-//                } else {
-//                    live_data_signin_phone_number.setValue(new Pair<Integer, String>(-1, "Error " + task.getException().getMessage()));
-//                }
-//            }
-//        });
-//    }
+    public void verificationCode(String code){
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
+        $_FirebaseData.getINSTANCE().signInWithPhoneAuthCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    $_UserModel user_model = new $_UserModel(task.getResult().getUser().getUid(), phone_number, "", "", "");
+
+                    $_FirebaseData.getINSTANCE().storeUsers(user_model.map());
+                    live_data_signin_phone_number.setValue(new Pair<Integer, String>(1, "Congratulations, you're logged in Successfully"));
+                } else {
+                    live_data_signin_phone_number.setValue(new Pair<Integer, String>(-1, "Error " + task.getException().getMessage()));
+                }
+            }
+        });
+    }
 
     public MutableLiveData<Pair<Integer, String>> getLive_data_signin_phone_number() {
         return live_data_signin_phone_number;

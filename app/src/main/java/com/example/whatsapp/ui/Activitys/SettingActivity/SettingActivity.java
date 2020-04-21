@@ -125,7 +125,12 @@ public class SettingActivity extends AppCompatActivity implements $_Initializati
                     activity_setting_binding.profileUsername.setText(user_model.getName());
                     activity_setting_binding.profileStatus.setText(user_model.getStatus());
                     activity_setting_binding.profileEmail.setText(user_model.getEmail());
-                    Picasso.get().load(user_model.getImage()).into(activity_setting_binding.profileImage);
+                    try {
+                        Picasso.get().load(user_model.getImage()).into(activity_setting_binding.profileImage);
+
+                    } catch (IllegalArgumentException ex) {
+
+                    }
                 } else {
                     $_Utils.makeToast(context, "Error in fetching data, please try again...", Toast.LENGTH_LONG);
                 }
@@ -137,8 +142,7 @@ public class SettingActivity extends AppCompatActivity implements $_Initializati
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==SELECT_IMAGE  &&  resultCode==RESULT_OK  &&  data!=null)
-        {
+        if (requestCode == SELECT_IMAGE && resultCode == RESULT_OK && data != null) {
             Uri ImageUri = data.getData();
 
             CropImage.activity(ImageUri)
@@ -147,12 +151,10 @@ public class SettingActivity extends AppCompatActivity implements $_Initializati
                     .start(this);
         }
 
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
-        {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
-            if (resultCode == RESULT_OK)
-            {
+            if (resultCode == RESULT_OK) {
                 Uri image = result.getUri();
                 progress_dialog.show();
                 setting_view_model.saveUserImageToStorage(image);
@@ -171,7 +173,7 @@ public class SettingActivity extends AppCompatActivity implements $_Initializati
                 initialInputDialog("Status");
                 break;
             case R.id.profile_image_select:
-                    $_Utils.openGallery(context, SELECT_IMAGE);
+                $_Utils.openGallery(context, SELECT_IMAGE);
                 break;
         }
     }

@@ -16,7 +16,7 @@ import com.example.whatsapp.Utils.$_Utils;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.databinding.ChatsItemBinding;
 import com.example.whatsapp.databinding.FragmentGroupsBinding;
-import com.example.whatsapp.model.$_GroupInformation;
+import com.example.whatsapp.model.$_GroupInformationModel;
 import com.example.whatsapp.ui.Activitys.GroupChatActivity.GroupChatActivity;
 import com.example.whatsapp.ui.Fragments.GroupsFragment.Adapter.$_GroupsAdapter;
 
@@ -32,7 +32,7 @@ public class GroupsFragment extends Fragment implements $_InitializationView {
     private ChatsItemBinding chats_item_binding;
     private $_GroupViewModel group_view_model;
     private GroupsFragment context;
-    private ArrayList<$_GroupInformation> items;
+    private ArrayList<$_GroupInformationModel> items;
     private $_GroupsAdapter group_adapter;
 
     public GroupsFragment() {
@@ -71,9 +71,9 @@ public class GroupsFragment extends Fragment implements $_InitializationView {
 
     @Override
     public void initializationActions() {
-        this.group_view_model.getLive_data_groups_set().observe(context, new Observer<Set<$_GroupInformation>>() {
+        this.group_view_model.getLive_data_groups_set().observe(context, new Observer<Set<$_GroupInformationModel>>() {
             @Override
-            public void onChanged(Set<$_GroupInformation> group_information) {
+            public void onChanged(Set<$_GroupInformationModel> group_information) {
                 if (group_information != null) {
                     items.clear();
                     items.addAll(group_information);
@@ -90,7 +90,7 @@ public class GroupsFragment extends Fragment implements $_InitializationView {
         public void onClick(View view) {
             RecyclerView.ViewHolder view_holder = (RecyclerView.ViewHolder) view.getTag();
             int position = view_holder.getAdapterPosition();
-            $_GroupInformation specific_item = items.get(position);
+            $_GroupInformationModel specific_item = items.get(position);
             Bundle bundle = new Bundle();
             bundle.putString("group_name", specific_item.getName());
 
