@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Activitys.VerificationCodeActivity.VerificationCodeActivity"></activity>
+        <activity android:name=".ui.Activitys.ProfileActivity.ProfileActivity"></activity>
+        <activity android:name=".ui.Activitys.VerificationCodeActivity.VerificationCodeActivity" />
         <activity
             android:name=".ui.Activitys.FindFriendActivity.FindFriendActivity"
             android:parentActivityName=".ui.Activitys.MainActivity.MainActivity" />

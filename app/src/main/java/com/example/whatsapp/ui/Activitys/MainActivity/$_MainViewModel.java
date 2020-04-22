@@ -30,7 +30,7 @@ public class $_MainViewModel extends ViewModel {
     }
 
     public void checkUsernameIsExist() {
-        $_FirebaseData.getINSTANCE().checkUsernameIsExist().addValueEventListener(new ValueEventListener() {
+        $_FirebaseData.getINSTANCE().checkUsernameIsExist($_FirebaseData.getINSTANCE().getFirebase_user().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot data_snapshot) {
                 if (data_snapshot.child("name").exists() && !data_snapshot.child("name").getValue(String.class).isEmpty()) {

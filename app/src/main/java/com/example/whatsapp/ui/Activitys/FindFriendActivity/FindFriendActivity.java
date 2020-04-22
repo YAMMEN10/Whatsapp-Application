@@ -17,6 +17,7 @@ import com.example.whatsapp.ui.Activitys.FindFriendActivity.Adapter.$_FindFriend
 public class FindFriendActivity extends AppCompatActivity implements $_InitializationView {
     private ActivityFindFriendBinding activity_find_friend_binding;
     private $_FindFriendAdapter find_friend_adapter;
+    private FindFriendActivity context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class FindFriendActivity extends AppCompatActivity implements $_Initializ
     @Override
     protected void onStart() {
         super.onStart();
-        this.find_friend_adapter = new $_FindFriendAdapter();
+        this.find_friend_adapter = new $_FindFriendAdapter(this.context);
         this.activity_find_friend_binding.recyclerViewFriend.setAdapter(this.find_friend_adapter.getAdapter());
         this.activity_find_friend_binding.recyclerViewFriend.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration divider = new DividerItemDecoration(this.activity_find_friend_binding.recyclerViewFriend.getContext(),
@@ -46,6 +47,8 @@ public class FindFriendActivity extends AppCompatActivity implements $_Initializ
         this.activity_find_friend_binding = ActivityFindFriendBinding.inflate(getLayoutInflater());
         View view = this.activity_find_friend_binding.getRoot();
         setContentView(view);
+
+        this.context = FindFriendActivity.this;
 
         setSupportActionBar(this.activity_find_friend_binding.mainAppbar.mainAppbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

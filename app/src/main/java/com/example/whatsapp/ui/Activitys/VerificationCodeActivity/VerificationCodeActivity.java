@@ -71,6 +71,7 @@ public class VerificationCodeActivity extends AppCompatActivity implements $_Ini
                 }
             }
         });
+
     }
 
     @Override

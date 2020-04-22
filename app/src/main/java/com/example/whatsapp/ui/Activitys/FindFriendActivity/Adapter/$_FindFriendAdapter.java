@@ -1,5 +1,7 @@
 package com.example.whatsapp.ui.Activitys.FindFriendActivity.Adapter;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +11,10 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.whatsapp.R;
+import com.example.whatsapp.Utils.$_Utils;
 import com.example.whatsapp.data.$_FirebaseData;
 import com.example.whatsapp.model.$_ContactModel;
+import com.example.whatsapp.ui.Activitys.ProfileActivity.ProfileActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
@@ -20,23 +24,31 @@ import xyz.schwaab.avvylib.AvatarView;
 public class $_FindFriendAdapter {
     private FirebaseRecyclerOptions<$_ContactModel> options;
     private FirebaseRecyclerAdapter<$_ContactModel, $_FindFriendViewHolder> adapter;
-
-    public $_FindFriendAdapter() {
+    private Context context;
+    public $_FindFriendAdapter(final Context context) {
         this.options = new FirebaseRecyclerOptions.Builder<$_ContactModel>()
                 .setQuery($_FirebaseData.getINSTANCE().getRoot_database_reference().child("Users"), $_ContactModel.class)
                 .build();
 
         this.adapter = new FirebaseRecyclerAdapter<$_ContactModel, $_FindFriendViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull $_FindFriendViewHolder holder, int position, @NonNull $_ContactModel model) {
+            protected void onBindViewHolder(@NonNull $_FindFriendViewHolder holder, final int position, @NonNull $_ContactModel model) {
                 holder.getFind_friend_name().setText(model.getName());
                 holder.getFind_friend_status().setText(model.getStatus());
                 try{
                     Picasso.get().load(model.getImage()).into(holder.getFind_friend_image());
-
                 }catch (IllegalArgumentException ex){
-
                 }
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String user_id = getRef(position).getKey();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("user id", user_id);
+                        $_Utils.goToTargetActivityWithData(context, ProfileActivity.class, bundle);
+                    }
+                });
 
             }
 
@@ -46,6 +58,7 @@ public class $_FindFriendAdapter {
                 return new $_FindFriendViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.friend_item, parent, false));
             }
         };
+        this.context = context;
     }
 
 

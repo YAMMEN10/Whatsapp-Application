@@ -58,8 +58,7 @@ public class $_FirebaseData {
         }
     }
 
-    public DatabaseReference checkUsernameIsExist() {
-        String user_id = this.firebase_user.getUid();
+    public DatabaseReference checkUsernameIsExist(String user_id) {
         return this.root_database_reference.child("Users").
                 child(user_id);
     }
