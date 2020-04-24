@@ -251,13 +251,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/solid_button_2"
+                android:background="@drawable/ripple_button_2"
                 android:paddingLeft="10dp"
 
                 android:paddingRight="10dp"
                 android:text="Send Message Request"
                 android:textAllCaps="false"
-                android:textColor="@color/colorWhite">
+                android:textColor="@color/colorWhite"
+                >
 
             </androidx.appcompat.widget.AppCompatButton>
 

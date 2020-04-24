@@ -12,17 +12,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 public class $_ProfileActivityViewModel extends ViewModel {
     private MutableLiveData<$_UserModel> live_data_user_information;
-    private MutableLiveData<Pair<Boolean, String>> live_data_receive_message_request;
+    private MutableLiveData<Boolean> live_data_send_message_request;
+    private MutableLiveData<Boolean> live_data_remove_message_request;
     private MutableLiveData<String> live_data_state_message_request;
 
     public $_ProfileActivityViewModel() {
         this.live_data_user_information = new MutableLiveData<>();
-        this.live_data_receive_message_request = new MutableLiveData<>();
+        this.live_data_send_message_request = new MutableLiveData<>();
         this.live_data_state_message_request = new MutableLiveData<>();
+        this.live_data_remove_message_request = new MutableLiveData<>();
     }
 
     public void getUserInformation(final String user_id) {
@@ -65,7 +68,12 @@ public class $_ProfileActivityViewModel extends ViewModel {
         $_FirebaseData.getINSTANCE().receiveChatRequest(receiver_user_id, sender_user_id).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                live_data_receive_message_request.setValue(new Pair<Boolean, String>(true, "request_sent"));
+                if (task.isSuccessful()) {
+                    live_data_send_message_request.setValue(true);
+                } else {
+                    live_data_send_message_request.setValue(false);
+
+                }
             }
         });
     }
@@ -77,6 +85,8 @@ public class $_ProfileActivityViewModel extends ViewModel {
                 if (data.hasChild(receiver_user_id)) {
                     String state = data.child(receiver_user_id).child("request_type").getValue(String.class);
                     live_data_state_message_request.setValue(state);
+                }else{
+                    live_data_state_message_request.setValue("new");
                 }
             }
 
@@ -89,17 +99,47 @@ public class $_ProfileActivityViewModel extends ViewModel {
     }
 
 
+    public void removeSendChatRequest(final String sender_user_id, final String receiver_user_id) {
+        $_FirebaseData.getINSTANCE().removeSendChatRequest(sender_user_id, receiver_user_id).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    removeReceiveChatRequest(receiver_user_id, sender_user_id);
+                } else {
+
+                }
+            }
+        });
+    }
+
+    public void removeReceiveChatRequest(String receiver_user_id, String sender_user_id) {
+        $_FirebaseData.getINSTANCE().removeReceiveChatRequest(receiver_user_id, sender_user_id).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    live_data_remove_message_request.setValue(true);
+                } else {
+                    live_data_remove_message_request.setValue(false);
+                }
+            }
+        });
+    }
+
+
     public MutableLiveData<$_UserModel> getLive_data_user_information() {
         return live_data_user_information;
     }
 
 
-
-    public MutableLiveData<Pair<Boolean, String>> getLive_data_receive_message_request() {
-        return live_data_receive_message_request;
+    public MutableLiveData<Boolean> getLive_data_send_message_request() {
+        return live_data_send_message_request;
     }
 
     public MutableLiveData<String> getLive_data_state_message_request() {
         return live_data_state_message_request;
+    }
+
+    public MutableLiveData<Boolean> getLive_data_remove_message_request() {
+        return live_data_remove_message_request;
     }
 }

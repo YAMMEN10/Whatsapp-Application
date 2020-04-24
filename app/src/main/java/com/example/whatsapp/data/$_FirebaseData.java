@@ -145,6 +145,15 @@ public class $_FirebaseData {
         return this.root_database_reference.child("Messages Requests").child(sender_user_id);
     }
 
+    public Task<Void> removeSendChatRequest(String sender_user_id, String receiver_user_id) {
+        return this.root_database_reference.child("Messages Requests").child(sender_user_id).child(receiver_user_id).
+                removeValue();
+    }
+
+    public Task<Void> removeReceiveChatRequest(String receiver_user_id, String sender_user_id) {
+        return this.root_database_reference.child("Messages Requests").child(receiver_user_id).child(sender_user_id).
+                removeValue();
+    }
 
     // Getter and Setter
     public static $_FirebaseData getINSTANCE() {
