@@ -20,14 +20,14 @@
             android:layout_height="50dp"
             android:src="@drawable/default_image"
             app:avvy_border_color="#262B33"
-            app:avvy_border_highlight_color="@color/transparent"
+            app:avvy_border_highlight_color="@color/colorTransparent"
             app:avvy_border_thickness="0dp"
             app:avvy_border_thickness_highlight="0dp"
             app:avvy_distance_to_border="0dp"
             app:avvy_highlighted="true"
             app:avvy_loading_arches="5"
             app:avvy_loading_arches_degree_area="90"
-            app:avvy_middle_color="@color/transparent" />
+            app:avvy_middle_color="@color/colorTransparent" />
 
         <xyz.schwaab.avvylib.AvatarView
             android:id="@+id/find_friend_online"
@@ -43,7 +43,7 @@
             app:avvy_highlighted="true"
             app:avvy_loading_arches="5"
             app:avvy_loading_arches_degree_area="90"
-            app:avvy_middle_color="@color/transparent" />
+            app:avvy_middle_color="@color/colorTransparent" />
 
     </FrameLayout>
 

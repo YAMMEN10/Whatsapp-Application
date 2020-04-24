@@ -36,7 +36,7 @@ public class $_MainViewModel extends ViewModel {
                 if (data_snapshot.child("name").exists() && !data_snapshot.child("name").getValue(String.class).isEmpty()) {
                     live_data_check_username_is_exist.setValue(new Pair<Boolean, String>(true, "Your welcome ..."));
                 } else {
-                    live_data_check_username_is_exist.setValue(new Pair<Boolean, String>(false, "First, please fill your information"));
+                    live_data_check_username_is_exist.setValue(new Pair<Boolean, String>(false, "First, please fill your information_"));
                 }
             }
 

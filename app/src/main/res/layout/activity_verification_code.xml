@@ -65,14 +65,14 @@
                 android:textColor="#fff"
                 android:textColorHint="#80EEEEEE"
                 android:textDirection="ltr"
-                app:boxBackgroundColor="@color/transparent"
+                app:boxBackgroundColor="@color/colorTransparent"
                 app:boxBackgroundMode="filled"
                 app:endIconMode="clear_text"
                 app:hintAnimationEnabled="true"
                 app:hintTextColor="#80EEEEEE"
                 app:startIconCheckable="true"
                 app:startIconDrawable="@drawable/verify_phone_code"
-                app:startIconTint="@color/transparent"
+                app:startIconTint="@color/colorTransparent"
 
                 app:startIconTintMode="screen">
 
@@ -80,7 +80,7 @@
                     android:id="@+id/signin_phone_add_verification_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/transparent"
+                    android:background="@color/colorTransparent"
                     android:inputType="numberSigned"
                     android:textColor="@color/colorWhite"
 
@@ -100,7 +100,7 @@
                 android:paddingRight="50dp"
                 android:text="Verify Code"
                 android:textAllCaps="false"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorBlack" />
 
         </LinearLayout>
 

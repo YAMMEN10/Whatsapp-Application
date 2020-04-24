@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/transparent"
+    android:background="@color/colorTransparent"
     android:orientation="horizontal">
 
     <xyz.schwaab.avvylib.AvatarView
@@ -19,7 +19,7 @@
         app:avvy_highlighted="true"
         app:avvy_loading_arches="5"
         app:avvy_loading_arches_degree_area="90"
-        app:avvy_middle_color="@color/transparent" />
+        app:avvy_middle_color="@color/colorTransparent" />
 
     <LinearLayout
         android:layout_width="match_parent"

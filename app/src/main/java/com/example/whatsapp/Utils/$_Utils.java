@@ -46,7 +46,7 @@ public class $_Utils {
         progress_dialog = new ProgressDialog(context);
         progress_dialog.setTitle(title);
         progress_dialog.setMessage(message);
-        progress_dialog.setCanceledOnTouchOutside(true);
+        progress_dialog.setCanceledOnTouchOutside(false);
         return progress_dialog;
     }
 

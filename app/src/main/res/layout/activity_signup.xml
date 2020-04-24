@@ -71,14 +71,14 @@
                     app:hintTextColor="#80EEEEEE"
                     app:startIconCheckable="true"
                     app:startIconDrawable="@drawable/gmail"
-                    app:startIconTint="@color/transparent"
+                    app:startIconTint="@color/colorTransparent"
                     app:startIconTintMode="screen">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/signupEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/transparent"
+                        android:background="@color/colorTransparent"
                         android:textColor="@color/colorWhite"
 
                         />
@@ -97,14 +97,14 @@
                     android:textColor="#fff"
                     android:textColorHint="#80EEEEEE"
                     android:textDirection="ltr"
-                    app:boxBackgroundColor="@color/transparent"
+                    app:boxBackgroundColor="@color/colorTransparent"
                     app:boxBackgroundMode="filled"
                     app:endIconMode="clear_text"
                     app:hintAnimationEnabled="true"
                     app:hintTextColor="#80EEEEEE"
                     app:startIconCheckable="true"
                     app:startIconDrawable="@drawable/password"
-                    app:startIconTint="@color/transparent"
+                    app:startIconTint="@color/colorTransparent"
 
                     app:startIconTintMode="screen">
 
@@ -112,7 +112,7 @@
                         android:id="@+id/signupPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/transparent"
+                        android:background="@color/colorTransparent"
                         android:textColor="@color/colorWhite"
                         android:inputType="textWebPassword"
 
@@ -130,7 +130,7 @@
                     android:layout_marginTop="30dp"
                     android:text="@string/sign_up"
                     android:textAllCaps="false"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorBlack"
                     android:textStyle="bold" />
 
 
@@ -168,7 +168,7 @@
                 android:paddingRight="100dp"
                 android:text="@string/sign_in"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/colorBlack"
                 android:textStyle="bold">
 
             </androidx.appcompat.widget.AppCompatButton>

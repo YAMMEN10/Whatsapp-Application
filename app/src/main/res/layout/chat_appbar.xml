@@ -26,7 +26,7 @@
             app:avvy_border_thickness="2dp"
             app:avvy_border_thickness_highlight="2dp"
             app:avvy_loading_arches_degree_area="90"
-            app:avvy_circle_background_color="@color/transparent"
+            app:avvy_circle_background_color="@color/colorTransparent"
             app:avvy_middle_color="@color/colorAccent"
             app:avvy_border_highlight_color="@color/colorAccent"
             />

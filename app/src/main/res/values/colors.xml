@@ -4,8 +4,9 @@
     <color name="colorPrimaryDark">#005048</color>
     <color name="colorAccent">#E6E6E6</color>
     <color name="colorWhite">#ffffff</color>
-    <color name="transparent">#00000000</color>
-    <color name="black">#D5000000</color>
-    <color name="ligth_black">#85000000</color>
-    <color name="very_ligth_black">#4F000000</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorBlack">#D5000000</color>
+    <color name="colorLightBlack">#85000000</color>
+    <color name="colorVeryLightBlack">#4F000000</color>
+    <color name="colorRed">#AF1313</color>
 </resources>

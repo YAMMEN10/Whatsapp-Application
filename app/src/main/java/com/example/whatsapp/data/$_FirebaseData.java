@@ -41,7 +41,7 @@ public class $_FirebaseData {
         return this.firebase_auth.signInWithEmailAndPassword(email, password);
     }
 
-    public Task<AuthResult> signInWithPhoneAuthCredential(PhoneAuthCredential phone_auth_credential){
+    public Task<AuthResult> signInWithPhoneAuthCredential(PhoneAuthCredential phone_auth_credential) {
         return this.firebase_auth.signInWithCredential(phone_auth_credential);
     }
 
@@ -75,7 +75,7 @@ public class $_FirebaseData {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid()).child("image").setValue(image);
     }
 
-    public Task<Uri> saveUserImageToStorage(Uri image){
+    public Task<Uri> saveUserImageToStorage(Uri image) {
         final StorageReference user_image_reference = this.user_profile_image_reference.child("Profile Images's").child(this.firebase_user.getUid() + ".jpg");
 
         return user_image_reference.putFile(image).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -91,15 +91,13 @@ public class $_FirebaseData {
         });
 
 
-
-
     }
 
     public DatabaseReference getSettingInformation() {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid());
     }
 
-    public DatabaseReference checkGroupIsExist(String group_name){
+    public DatabaseReference checkGroupIsExist(String group_name) {
         return this.root_database_reference.child("Groups").child(group_name);
     }
 
@@ -125,15 +123,27 @@ public class $_FirebaseData {
         return $_FirebaseData.getINSTANCE().root_database_reference.child("Groups").child(group_name).child(message_key);
     }
 
-    public DatabaseReference getMessageOfGroup(String group_name){
+    public DatabaseReference getMessageOfGroup(String group_name) {
         return this.root_database_reference.child("Groups").child(group_name);
     }
 
-    public DatabaseReference getUserInformation(String user_id){
+    public DatabaseReference getUserInformation(String user_id) {
         return this.root_database_reference.child("Users").child(user_id);
     }
 
+    public Task<Void> sendChatRequest(String sender_user_id, String receiver_user_id) {
+        return this.root_database_reference.child("Messages Requests").child(sender_user_id).child(receiver_user_id).
+                child("request_type").setValue("sent");
+    }
 
+    public Task<Void> receiveChatRequest(String receiver_user_id, String sender_user_id) {
+        return this.root_database_reference.child("Messages Requests").child(receiver_user_id).child(sender_user_id).
+                child("request_type").setValue("received");
+    }
+
+    public DatabaseReference getMessageChatStateFromSenderToReceiver(String sender_user_id) {
+        return this.root_database_reference.child("Messages Requests").child(sender_user_id);
+    }
 
 
     // Getter and Setter

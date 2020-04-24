@@ -6,16 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
+    android:fillViewport="true"
     tools:context=".ui.Activitys.ProfileActivity.ProfileActivity">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <LinearLayout
                 android:id="@+id/background"
@@ -42,96 +42,99 @@
 
         </RelativeLayout>
 
+        <include
+            android:id="@+id/main_appbar"
+            layout="@layout/setting_appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/main_appbar"
+            android:layout_marginTop="50dp"
+            android:layoutDirection="ltr"
             android:orientation="vertical">
 
-            <View
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                app:cardCornerRadius="40dp"
+                app:cardElevation="5dp">
 
-            <LinearLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:background="#A4FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <xyz.schwaab.avvylib.AvatarView
+                        android:id="@+id/show_profile_image"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/default_image"
+
+                        app:avvy_border_color="@color/colorPrimary"
+                        app:avvy_border_highlight_color="#FFE600"
+                        app:avvy_border_highlight_color_end="#009688"
+                        app:avvy_border_thickness="0dp"
+                        app:avvy_border_thickness_highlight="5dp"
+                        app:avvy_distance_to_border="3dp"
+                        app:avvy_highlighted="true"
+                        app:avvy_loading_arc_degree_length="3"
+                        app:avvy_loading_arches="10"
+                        app:avvy_loading_arches_degree_area="90"
+                        app:avvy_middle_color="@color/colorWhite" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/show_profile_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|bottom"
+                        android:layout_marginTop="15dp"
+                        android:gravity="bottom|center"
+                        android:maxLines="2"
+                        android:padding="10dp"
+                        android:scrollbars="vertical"
+                        android:text="username"
+                        android:textAllCaps="false"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="10"
-                android:layoutDirection="ltr"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20sp"
-                    android:layout_marginRight="20sp"
-                    app:cardCornerRadius="40dp"
-                    app:cardElevation="5dp">
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="20dp"
-                        android:background="#A4FFFFFF"
-                        android:orientation="vertical"
-                        android:padding="10dp">
-
-                        <xyz.schwaab.avvylib.AvatarView
-                            android:id="@+id/show_profile_image"
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/default_image"
-                            app:avvy_border_color="#262B33"
-                            app:avvy_border_highlight_color="@color/colorAccent"
-                            app:avvy_border_thickness="0dp"
-                            app:avvy_border_thickness_highlight="0dp"
-                            app:avvy_distance_to_border="0dp"
-                            app:avvy_highlighted="true"
-                            app:avvy_loading_arches="5"
-                            app:avvy_loading_arches_degree_area="90"
-                            app:avvy_middle_color="@color/colorAccent" />
-
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/show_profile_username"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="bottom|center"
-                            android:maxLines="4"
-                            android:padding="20dp"
-                            android:scrollbars="vertical"
-                            android:text="username"
-                            android:textAllCaps="false"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/show_profile_status"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="top|center"
-                            android:maxLines="4"
-                            android:padding="10dp"
-                            android:scrollbars="vertical"
-                            android:text="sattus"
-                            android:textAllCaps="false"
-                            android:textSize="12sp" />
-
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="20dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:textSize="20dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -141,20 +144,86 @@
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:layout_gravity="center"
                             android:layout_margin="10dp"
-                            android:src="@drawable/gmail"
+                            android:src="@drawable/information_"
                             app:avvy_border_color="#262B33"
-                            app:avvy_border_highlight_color="@color/transparent"
+                            app:avvy_border_highlight_color="@color/colorTransparent"
                             app:avvy_border_thickness="0dp"
                             app:avvy_border_thickness_highlight="0dp"
                             app:avvy_distance_to_border="0dp"
                             app:avvy_highlighted="true"
                             app:avvy_loading_arches="5"
                             app:avvy_loading_arches_degree_area="90"
-                            app:avvy_middle_color="@color/transparent" />
+                            app:avvy_middle_color="@color/colorTransparent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/show_profile_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="start"
+                            android:maxLines="2"
+                            android:padding="10dp"
+                            android:scrollbars="vertical"
+                            android:text="sattus"
+                            android:textAllCaps="false"
+                            android:textSize="13sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact"
+                        android:textSize="20dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#A4FFFFFF"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/gmail"
+                            app:avvy_border_color="#262B33"
+
+                            app:avvy_border_highlight_color="@color/colorTransparent"
+                            app:avvy_border_thickness="0dp"
+                            app:avvy_border_thickness_highlight="0dp"
+                            app:avvy_distance_to_border="0dp"
+                            app:avvy_highlighted="true"
+                            app:avvy_loading_arches="5"
+                            app:avvy_loading_arches_degree_area="90"
+                            app:avvy_middle_color="@color/colorTransparent" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/show_profile_email"
@@ -167,22 +236,34 @@
                             android:padding="10dp"
                             android:text="email"
                             android:textAllCaps="false"
-                            android:textSize="15sp" />
+                            android:textSize="13dp" />
 
 
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
 
-            </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/show_profile_send_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/solid_button_2"
+                android:paddingLeft="10dp"
+
+                android:paddingRight="10dp"
+                android:text="Send Message Request"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite">
+
+            </androidx.appcompat.widget.AppCompatButton>
 
         </LinearLayout>
 
-        <include
-            android:id="@+id/main_appbar"
-            layout="@layout/setting_appbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
+    </RelativeLayout>
 
-    </FrameLayout>
 </ScrollView>
