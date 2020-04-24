@@ -2,7 +2,7 @@
     xmlns:aapt="http://schemas.android.com/aapt"
     android:name="vector"
     android:width="1080dp"
-    android:height="1920dp"
+    android:height="700dp"
     android:viewportWidth="1080"
     android:viewportHeight="1920">
     <group>

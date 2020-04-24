@@ -129,7 +129,9 @@ public class $_FirebaseData {
         return this.root_database_reference.child("Groups").child(group_name);
     }
 
-
+    public DatabaseReference getUserInformation(String user_id){
+        return this.root_database_reference.child("Users").child(user_id);
+    }
 
 
 

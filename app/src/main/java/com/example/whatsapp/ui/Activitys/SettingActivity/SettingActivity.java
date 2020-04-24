@@ -126,9 +126,8 @@ public class SettingActivity extends AppCompatActivity implements $_Initializati
                     activity_setting_binding.profileStatus.setText(user_model.getStatus());
                     activity_setting_binding.profileEmail.setText(user_model.getEmail());
                     try {
-                        Picasso.get().load(user_model.getImage()).into(activity_setting_binding.profileImage);
-
-                    } catch (IllegalArgumentException ex) {
+                        Picasso.get().load(user_model.getImage()).placeholder(R.drawable.default_image).into(activity_setting_binding.profileImage);
+                    } catch (Exception ex) {
 
                     }
                 } else {

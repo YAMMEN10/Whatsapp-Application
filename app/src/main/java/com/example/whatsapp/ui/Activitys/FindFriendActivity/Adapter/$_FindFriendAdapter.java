@@ -25,6 +25,7 @@ public class $_FindFriendAdapter {
     private FirebaseRecyclerOptions<$_ContactModel> options;
     private FirebaseRecyclerAdapter<$_ContactModel, $_FindFriendViewHolder> adapter;
     private Context context;
+
     public $_FindFriendAdapter(final Context context) {
         this.options = new FirebaseRecyclerOptions.Builder<$_ContactModel>()
                 .setQuery($_FirebaseData.getINSTANCE().getRoot_database_reference().child("Users"), $_ContactModel.class)
@@ -35,9 +36,11 @@ public class $_FindFriendAdapter {
             protected void onBindViewHolder(@NonNull $_FindFriendViewHolder holder, final int position, @NonNull $_ContactModel model) {
                 holder.getFind_friend_name().setText(model.getName());
                 holder.getFind_friend_status().setText(model.getStatus());
-                try{
-                    Picasso.get().load(model.getImage()).into(holder.getFind_friend_image());
-                }catch (IllegalArgumentException ex){
+                try {
+                    Picasso.get().load(model.getImage()).placeholder(R.drawable.default_image).into(holder.getFind_friend_image());
+
+                }catch (Exception ex){
+
                 }
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -62,12 +65,11 @@ public class $_FindFriendAdapter {
     }
 
 
-
-
-    public static class $_FindFriendViewHolder extends RecyclerView.ViewHolder{
+    public static class $_FindFriendViewHolder extends RecyclerView.ViewHolder {
         private AppCompatTextView find_friend_name;
         private AppCompatTextView find_friend_status;
         private AvatarView find_friend_image;
+
         public $_FindFriendViewHolder(@NonNull View item_view) {
             super(item_view);
             this.find_friend_name = item_view.findViewById(R.id.find_friend_name);
