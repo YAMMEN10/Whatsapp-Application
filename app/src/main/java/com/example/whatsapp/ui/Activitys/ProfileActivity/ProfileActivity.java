@@ -88,6 +88,7 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
         this.current_state = "new";
 
         this.activity_profile_binding.showProfileSendMessage.setOnClickListener(this);
+        this.activity_profile_binding.showProfileRemoveMessageRequest.setOnClickListener(this);
         this.profile_activity_view_model.getUserInformation(receiver_user_id);
     }
 
@@ -117,8 +118,7 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
                 progress_dialog_send_message_request.dismiss();
 
                 if(successfully){
-                    activity_profile_binding.showProfileSendMessage.setBackgroundResource(R.drawable.ripple_button_cancel);
-                    activity_profile_binding.showProfileSendMessage.setText("Cancel Message Request");
+
                     $_Utils.makeToast(context, "Send Message Request Successfully", Toast.LENGTH_LONG);
                 }else{
                     $_Utils.makeToast(context, "Error when Sending Message Request", Toast.LENGTH_LONG);
@@ -133,8 +133,7 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
                 progress_dialog_remove_message_request.dismiss();
 
                 if(successfully){
-                    activity_profile_binding.showProfileSendMessage.setBackgroundResource(R.drawable.ripple_button_2);
-                    activity_profile_binding.showProfileSendMessage.setText("Send Message Request");
+
                     $_Utils.makeToast(context, "Remove Message Request Successfully", Toast.LENGTH_LONG);
                 }else{
                     $_Utils.makeToast(context, "Error when Removing Message Request", Toast.LENGTH_LONG);
@@ -149,12 +148,27 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
                 progress_dialog_get_state_message_request.dismiss();
                 current_state = state;
                 if(state != null){
-                    if (state.equals("sent")) {
+                    if(current_state.equals("new")){
+                        activity_profile_binding.showProfileSendMessage.setBackgroundResource(R.drawable.ripple_button_2);
+                        activity_profile_binding.showProfileSendMessage.setText("Send Message Request");
+                        activity_profile_binding.showProfileRemoveMessageRequest.setVisibility(View.INVISIBLE);
+
+                    }
+                    else if (current_state.equals("sent")) {
                         activity_profile_binding.showProfileSendMessage.setBackgroundResource(R.drawable.ripple_button_cancel);
                         activity_profile_binding.showProfileSendMessage.setText("Cancel Message Request");
+                    }else if (current_state.equals("received")){
+                        activity_profile_binding.showProfileSendMessage.setBackgroundResource(R.drawable.ripple_button_accept);
+                        activity_profile_binding.showProfileSendMessage.setText("Accept Message Request");
+
+                        activity_profile_binding.showProfileRemoveMessageRequest.setBackgroundResource(R.drawable.ripple_button_cancel);
+                        activity_profile_binding.showProfileRemoveMessageRequest.setText("Remove Message Request");
+                        activity_profile_binding.showProfileRemoveMessageRequest.setVisibility(View.VISIBLE);
                     }
                 }else{
                     // do somethings
+
+
                 }
 
             }
@@ -177,6 +191,12 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
                 }else{
                     $_Utils.makeToast(context, "Please try again, some error obscure", Toast.LENGTH_LONG);
                 }
+                break;
+
+            case R.id.show_profile_remove_message_request:
+                this.progress_dialog_remove_message_request.show();
+                this.profile_activity_view_model.removeSendChatRequest(this.sender_user_id, this.receiver_user_id);
+                break;
 
         }
     }

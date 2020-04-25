@@ -257,6 +257,25 @@
                 android:paddingRight="10dp"
                 android:text="Send Message Request"
                 android:textAllCaps="false"
+                android:textSize="12dp"
+                android:textColor="@color/colorWhite"
+                >
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/show_profile_remove_message_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ripple_button_2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Remove Message Request"
+                android:textAllCaps="false"
+                android:textSize="12dp"
+                android:visibility="invisible"
                 android:textColor="@color/colorWhite"
                 >
 
