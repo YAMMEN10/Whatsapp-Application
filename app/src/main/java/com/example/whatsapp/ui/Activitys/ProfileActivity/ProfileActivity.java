@@ -29,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
     private ProgressDialog progress_dialog_send_message_request;
     private ProgressDialog progress_dialog_remove_message_request;
     private ProgressDialog progress_dialog_get_state_message_request;
+    private ProgressDialog progress_dialog_remove_friend;
 
 
     @Override
@@ -57,6 +58,10 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
 
         // Init progress dialog for get state of sending message request and show if user id sender not equal user id receiver
         this.progress_dialog_get_state_message_request = $_Utils.makeProgressDialog(context, "Get Sending Message State","Please wait, while getting sending message request for you...");
+
+        // Init progress dialog for remove friend and show if user click remove friend
+        this.progress_dialog_remove_friend = $_Utils.makeProgressDialog(context, "Remove Friend","Please wait, while removing friend for you...");
+
 
         // Set vertical scroll to text view
         this.activity_profile_binding.showProfileUsername.setMovementMethod(new ScrollingMovementMethod());
@@ -164,13 +169,29 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
                         activity_profile_binding.showProfileRemoveMessageRequest.setBackgroundResource(R.drawable.ripple_button_cancel);
                         activity_profile_binding.showProfileRemoveMessageRequest.setText("Remove Message Request");
                         activity_profile_binding.showProfileRemoveMessageRequest.setVisibility(View.VISIBLE);
+                    }else if (current_state.equals("friend")){
+                        activity_profile_binding.showProfileSendMessage.setBackgroundResource(R.drawable.ripple_button_cancel);
+                        activity_profile_binding.showProfileSendMessage.setText("Remove Friend");
+                        activity_profile_binding.showProfileRemoveMessageRequest.setVisibility(View.INVISIBLE);
                     }
                 }else{
                     // do somethings
+                }
+            }
+        });
 
+        this.profile_activity_view_model.getLive_data_remove_friend().observe(context, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean removed) {
+                if(removed){
+                    progress_dialog_remove_friend.dismiss();
+                    $_Utils.makeToast(context, "Successfully removed friend", Toast.LENGTH_LONG);
+                    activity_profile_binding.showProfileSendMessage.setBackgroundResource(R.drawable.ripple_button_2);
+                    activity_profile_binding.showProfileSendMessage.setText("Send Message Request");
+                }else{
+                    $_Utils.makeToast(context, "Error when removed friend", Toast.LENGTH_LONG);
 
                 }
-
             }
         });
     }
@@ -186,7 +207,13 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
                     }else if (current_state.equals("sent")){
                         this.progress_dialog_remove_message_request.show();
                         this.profile_activity_view_model.removeSendChatRequest(this.sender_user_id, this.receiver_user_id);
-
+                    }else if (current_state.equals("received")){
+                        this.progress_dialog_remove_message_request = $_Utils.makeProgressDialog(context, "Accept Message Request","Please wait, while accepting message request for you...");
+                        this.progress_dialog_remove_message_request.show();
+                        this.profile_activity_view_model.acceptMessageRequestFromSender(sender_user_id, receiver_user_id);
+                    }else if (current_state.equals("friend")){
+                        this.progress_dialog_remove_friend.show();
+                        this.profile_activity_view_model.removeFriendFromSender(sender_user_id, receiver_user_id);
                     }
                 }else{
                     $_Utils.makeToast(context, "Please try again, some error obscure", Toast.LENGTH_LONG);

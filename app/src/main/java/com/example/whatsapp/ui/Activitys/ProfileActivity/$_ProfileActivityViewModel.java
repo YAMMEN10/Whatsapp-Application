@@ -20,12 +20,14 @@ public class $_ProfileActivityViewModel extends ViewModel {
     private MutableLiveData<Boolean> live_data_send_message_request;
     private MutableLiveData<Boolean> live_data_remove_message_request;
     private MutableLiveData<String> live_data_state_message_request;
+    private MutableLiveData<Boolean> live_data_remove_friend;
 
     public $_ProfileActivityViewModel() {
         this.live_data_user_information = new MutableLiveData<>();
         this.live_data_send_message_request = new MutableLiveData<>();
         this.live_data_state_message_request = new MutableLiveData<>();
         this.live_data_remove_message_request = new MutableLiveData<>();
+        this.live_data_remove_friend = new MutableLiveData<>();
     }
 
     public void getUserInformation(final String user_id) {
@@ -78,7 +80,7 @@ public class $_ProfileActivityViewModel extends ViewModel {
         });
     }
 
-    public void getMessageChatStateFromSenderToReceiver(String sender_user_id, final String receiver_user_id) {
+    public void getMessageChatStateFromSenderToReceiver(final String sender_user_id, final String receiver_user_id) {
         $_FirebaseData.getINSTANCE().getMessageChatStateFromSenderToReceiver(sender_user_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot data) {
@@ -86,7 +88,7 @@ public class $_ProfileActivityViewModel extends ViewModel {
                     String state = data.child(receiver_user_id).child("request_type").getValue(String.class);
                     live_data_state_message_request.setValue(state);
                 }else{
-                    live_data_state_message_request.setValue("new");
+                    checkUserIsFriend(sender_user_id, receiver_user_id);
                 }
             }
 
@@ -98,6 +100,24 @@ public class $_ProfileActivityViewModel extends ViewModel {
         });
     }
 
+    public void checkUserIsFriend(String sender_user_id, final String receiver_user_id){
+        $_FirebaseData.getINSTANCE().checkUserIsFriend(sender_user_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot data) {
+                if(data.hasChild(receiver_user_id)){
+                    live_data_state_message_request.setValue("friend");
+                }else{
+                    live_data_state_message_request.setValue("new");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError database_Eror) {
+
+            }
+        });
+
+    }
 
     public void removeSendChatRequest(final String sender_user_id, final String receiver_user_id) {
         $_FirebaseData.getINSTANCE().removeSendChatRequest(sender_user_id, receiver_user_id).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -125,11 +145,63 @@ public class $_ProfileActivityViewModel extends ViewModel {
         });
     }
 
+    public void acceptMessageRequestFromSender(final String sender_user_id, final String receiver_user_id){
+        $_FirebaseData.getINSTANCE().acceptMessageRequestFromSender(sender_user_id, receiver_user_id).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    acceptMessageRequestFromReceiver(receiver_user_id, sender_user_id);
+                }else{
+
+                }
+            }
+        });
+    }
+
+    public void acceptMessageRequestFromReceiver(final String receiver_user_id, final String sender_user_id){
+        $_FirebaseData.getINSTANCE().acceptMessageRequestFromReceiver(receiver_user_id, sender_user_id).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    removeSendChatRequest(sender_user_id, receiver_user_id);
+                }else{
+
+                }
+            }
+        });
+    }
+
+    public void removeFriendFromSender(final String sender_user_id, final String receiver_user_id){
+        $_FirebaseData.getINSTANCE().removeFriendFromSender(sender_user_id, receiver_user_id).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    removeFriendFromReceiver(receiver_user_id, sender_user_id);
+                }else{
+
+                }
+            }
+        });
+    }
+
+    public void removeFriendFromReceiver(final String receiver_user_id, final String sender_user_id){
+        $_FirebaseData.getINSTANCE().removeFriendFromReceiver(receiver_user_id, sender_user_id).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    live_data_remove_friend.setValue(true);
+                }else{
+                    live_data_remove_friend.setValue(true);
+                }
+            }
+        });
+    }
+
+
 
     public MutableLiveData<$_UserModel> getLive_data_user_information() {
         return live_data_user_information;
     }
-
 
     public MutableLiveData<Boolean> getLive_data_send_message_request() {
         return live_data_send_message_request;
@@ -141,5 +213,9 @@ public class $_ProfileActivityViewModel extends ViewModel {
 
     public MutableLiveData<Boolean> getLive_data_remove_message_request() {
         return live_data_remove_message_request;
+    }
+
+    public MutableLiveData<Boolean> getLive_data_remove_friend() {
+        return live_data_remove_friend;
     }
 }

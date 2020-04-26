@@ -16,6 +16,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.Date;
 import java.util.Map;
 
 public class $_FirebaseData {
@@ -89,9 +90,9 @@ public class $_FirebaseData {
                 return user_image_reference.getDownloadUrl();
             }
         });
-
-
     }
+
+
 
     public DatabaseReference getSettingInformation() {
         return this.root_database_reference.child("Users").child(this.firebase_user.getUid());
@@ -153,6 +154,32 @@ public class $_FirebaseData {
     public Task<Void> removeReceiveChatRequest(String receiver_user_id, String sender_user_id) {
         return this.root_database_reference.child("Messages Requests").child(receiver_user_id).child(sender_user_id).
                 removeValue();
+    }
+
+    public Task<Void> acceptMessageRequestFromSender(String sender_user_id, String receiver_user_id){
+        return this.root_database_reference.child("Contacts").child(sender_user_id).child(receiver_user_id)
+                .child("Contacts").setValue("Saved");
+    }
+
+
+    public Task<Void> acceptMessageRequestFromReceiver(String receiver_user_id, String sender_user_id){
+        return this.root_database_reference.child("Contacts").child(receiver_user_id).child(sender_user_id)
+                .child("Contacts").setValue("Saved");
+    }
+
+    public Task<Void> removeFriendFromSender(String sender_user_id, String receiver_user_id){
+        return this.root_database_reference.child("Contacts").child(sender_user_id).child(receiver_user_id)
+                .removeValue();
+    }
+
+    public Task<Void> removeFriendFromReceiver(String receiver_user_id, String sender_user_id){
+        return this.root_database_reference.child("Contacts").child(receiver_user_id).child(sender_user_id)
+                .removeValue();
+    }
+
+
+    public DatabaseReference checkUserIsFriend(String sender_user_id){
+        return this.root_database_reference.child("Contacts").child(sender_user_id);
     }
 
     // Getter and Setter
