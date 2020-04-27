@@ -158,13 +158,13 @@ public class $_FirebaseData {
 
     public Task<Void> acceptMessageRequestFromSender(String sender_user_id, String receiver_user_id){
         return this.root_database_reference.child("Contacts").child(sender_user_id).child(receiver_user_id)
-                .child("Contacts").setValue("Saved");
+                .child("key").setValue(receiver_user_id);
     }
 
 
     public Task<Void> acceptMessageRequestFromReceiver(String receiver_user_id, String sender_user_id){
         return this.root_database_reference.child("Contacts").child(receiver_user_id).child(sender_user_id)
-                .child("Contacts").setValue("Saved");
+                .child("key").setValue(sender_user_id);
     }
 
     public Task<Void> removeFriendFromSender(String sender_user_id, String receiver_user_id){
@@ -181,6 +181,8 @@ public class $_FirebaseData {
     public DatabaseReference checkUserIsFriend(String sender_user_id){
         return this.root_database_reference.child("Contacts").child(sender_user_id);
     }
+
+
 
     // Getter and Setter
     public static $_FirebaseData getINSTANCE() {

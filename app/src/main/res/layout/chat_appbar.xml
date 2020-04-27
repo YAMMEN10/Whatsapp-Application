@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_appbar"
     android:layout_width="match_parent"
@@ -8,55 +7,56 @@
     android:background="@color/colorPrimary"
     android:layoutDirection="ltr"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <xyz.schwaab.avvylib.AvatarView
-            android:id="@+id/chat_image"
+            android:id="@+id/chat_appbar_image"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            app:avvy_border_highlight_color_end="@color/colorAccent"
-            app:avvy_border_color_end="@color/colorAccent"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:src="@drawable/default_image"
             app:avvy_border_color="#262B33"
+            app:avvy_border_color_end="@color/colorAccent"
+            app:avvy_border_highlight_color="@color/colorAccent"
+            app:avvy_border_highlight_color_end="@color/colorAccent"
+            app:avvy_border_thickness="2dp"
+            app:avvy_border_thickness_highlight="2dp"
+            app:avvy_circle_background_color="@color/colorTransparent"
             app:avvy_distance_to_border="0dp"
             app:avvy_highlighted="true"
             app:avvy_loading_arches="5"
-            app:avvy_border_thickness="2dp"
-            app:avvy_border_thickness_highlight="2dp"
             app:avvy_loading_arches_degree_area="90"
-            app:avvy_circle_background_color="@color/colorTransparent"
-            app:avvy_middle_color="@color/colorAccent"
-            app:avvy_border_highlight_color="@color/colorAccent"
-            />
+            app:avvy_middle_color="@color/colorAccent" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="6"
             android:layout_height="match_parent"
+            android:layout_weight="6"
             android:orientation="vertical">
+
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/chat_name"
+                android:id="@+id/chat_appbar_name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="start|center"
-                android:text="Username"
                 android:paddingLeft="3dp"
-                >
+                android:text="Username">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/chat_online"
+                android:id="@+id/chat_appbar_online"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_weight="1"
                 android:gravity="start|center"
                 android:paddingLeft="5dp"
-                android:layout_weight="1"
-                android:textSize="10dp"
-                android:text="Online">
+                android:text="Online"
+                android:textSize="10dp">
 
             </androidx.appcompat.widget.AppCompatTextView>
         </LinearLayout>

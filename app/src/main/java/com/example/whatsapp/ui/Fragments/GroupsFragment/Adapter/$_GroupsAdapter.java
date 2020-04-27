@@ -49,7 +49,7 @@ public class $_GroupsAdapter extends RecyclerView.Adapter<$_GroupsAdapter.$_Grou
 
         public $_GroupViewHolder(@NonNull final View item_view) {
             super(item_view);
-            this.name = item_view.findViewById(R.id.name);
+            this.name = item_view.findViewById(R.id.chat_name);
             itemView.setTag(this);
             itemView.setOnClickListener(mOnItemClickListener);
         }

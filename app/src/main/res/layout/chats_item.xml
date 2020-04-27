@@ -7,7 +7,7 @@
     android:orientation="horizontal">
 
     <xyz.schwaab.avvylib.AvatarView
-        android:id="@+id/profile_image"
+        android:id="@+id/chat_profile_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/default_image"
@@ -29,21 +29,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
-            android:orientation="horizontal"
             android:layout_gravity="top"
-            android:layoutDirection="ltr">
+            android:layout_weight="3"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/name"
+                android:id="@+id/chat_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
-                android:padding="10dp"
-                android:text="Username"
+                android:ellipsize="end"
                 android:gravity="start"
                 android:maxLines="1"
-                android:ellipsize="end"
+                android:padding="10dp"
+                android:text="Username"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textAppearance="?attr/textAppearanceBody2"
@@ -54,15 +54,15 @@
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/date"
+                android:id="@+id/chat_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:text="12:30"
                 android:ellipsize="end"
                 android:gravity="start"
                 android:maxLines="1"
+                android:padding="10dp"
+                android:text="12:30"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textAppearance="?attr/textAppearanceBody2"
@@ -77,28 +77,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal"
             android:layout_gravity="bottom"
-            android:gravity="bottom">
+            android:layout_weight="2"
+            android:gravity="bottom"
+            android:orientation="horizontal">
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/message"
+                android:id="@+id/chat_message"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="10dp"
+                android:ellipsize="end"
                 android:gravity="start|top"
                 android:maxLines="1"
-                android:ellipsize="end"
+                android:paddingLeft="10dp"
                 android:text="tttttgghgsdjflksjdfijsadfjskldfj"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textDirection="ltr"
-                android:textSize="12dp"/>
-
+                android:textSize="12dp" />
 
 
         </LinearLayout>

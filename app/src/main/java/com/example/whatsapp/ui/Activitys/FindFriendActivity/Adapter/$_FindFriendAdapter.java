@@ -34,10 +34,10 @@ public class $_FindFriendAdapter {
         this.adapter = new FirebaseRecyclerAdapter<$_ContactModel, $_FindFriendViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull $_FindFriendViewHolder holder, final int position, @NonNull $_ContactModel model) {
-                holder.getFind_friend_name().setText(model.getName());
-                holder.getFind_friend_status().setText(model.getStatus());
+                holder.getUser_name().setText(model.getName());
+                holder.getUser_status().setText(model.getStatus());
                 try {
-                    Picasso.get().load(model.getImage()).placeholder(R.drawable.default_image).into(holder.getFind_friend_image());
+                    Picasso.get().load(model.getImage()).placeholder(R.drawable.default_image).into(holder.getUser_image());
 
                 }catch (Exception ex){
 
@@ -58,7 +58,7 @@ public class $_FindFriendAdapter {
             @NonNull
             @Override
             public $_FindFriendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return new $_FindFriendViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.friend_item, parent, false));
+                return new $_FindFriendViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.user_item, parent, false));
             }
         };
         this.context = context;
@@ -66,39 +66,39 @@ public class $_FindFriendAdapter {
 
 
     public static class $_FindFriendViewHolder extends RecyclerView.ViewHolder {
-        private AppCompatTextView find_friend_name;
-        private AppCompatTextView find_friend_status;
-        private AvatarView find_friend_image;
+        private AppCompatTextView user_name;
+        private AppCompatTextView user_status;
+        private AvatarView user_image;
 
         public $_FindFriendViewHolder(@NonNull View item_view) {
             super(item_view);
-            this.find_friend_name = item_view.findViewById(R.id.find_friend_name);
-            this.find_friend_status = item_view.findViewById(R.id.find_friend_status);
-            this.find_friend_image = item_view.findViewById(R.id.find_friend_image);
+            this.user_name = item_view.findViewById(R.id.user_name);
+            this.user_status = item_view.findViewById(R.id.user_status);
+            this.user_image = item_view.findViewById(R.id.user_image);
         }
 
-        public AppCompatTextView getFind_friend_name() {
-            return find_friend_name;
+        public AppCompatTextView getUser_name() {
+            return user_name;
         }
 
-        public void setFind_friend_name(AppCompatTextView find_friend_name) {
-            this.find_friend_name = find_friend_name;
+        public void setUser_name(AppCompatTextView user_name) {
+            this.user_name = user_name;
         }
 
-        public AppCompatTextView getFind_friend_status() {
-            return find_friend_status;
+        public AppCompatTextView getUser_status() {
+            return user_status;
         }
 
-        public void setFind_friend_status(AppCompatTextView find_friend_status) {
-            this.find_friend_status = find_friend_status;
+        public void setUser_status(AppCompatTextView user_status) {
+            this.user_status = user_status;
         }
 
-        public AvatarView getFind_friend_image() {
-            return find_friend_image;
+        public AvatarView getUser_image() {
+            return user_image;
         }
 
-        public void setFind_friend_image(AvatarView find_friend_image) {
-            this.find_friend_image = find_friend_image;
+        public void setUser_image(AvatarView user_image) {
+            this.user_image = user_image;
         }
     }
 
