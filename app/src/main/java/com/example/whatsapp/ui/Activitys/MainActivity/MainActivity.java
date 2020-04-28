@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements $_InitializationV
 
         setSupportActionBar(this.activity_main_binding.mainAppbar.mainAppbar);
         getSupportActionBar().setTitle("Whatsapp");
-        this.tabs_access_adapter = new $_TabsAccessAdapter(getSupportFragmentManager(), 3);
+        this.tabs_access_adapter = new $_TabsAccessAdapter(getSupportFragmentManager(), 4);
         activity_main_binding.mainTabsViewPage.setAdapter(this.tabs_access_adapter);
         activity_main_binding.mainTapsLayout.setupWithViewPager(activity_main_binding.mainTabsViewPage);
         this.activity_main_binding.mainItemFloatingActionMenu.setOnClickListener(this);

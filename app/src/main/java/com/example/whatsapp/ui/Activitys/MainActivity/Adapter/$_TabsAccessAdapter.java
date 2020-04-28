@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.whatsapp.ui.Fragments.ChatFragment.ChatsFragment;
 import com.example.whatsapp.ui.Fragments.ContactsFragment.ContactsFragment;
 import com.example.whatsapp.ui.Fragments.GroupsFragment.GroupsFragment;
+import com.example.whatsapp.ui.Fragments.RequestsFragment.RequestsFragment;
 
 public class $_TabsAccessAdapter extends FragmentPagerAdapter {
     private Fragment main_page_fragment[];
@@ -37,6 +38,9 @@ public class $_TabsAccessAdapter extends FragmentPagerAdapter {
             case 2:
                 this.main_page_fragment[position] = new ContactsFragment();
                 return this.main_page_fragment[position];
+            case 3:
+                this.main_page_fragment[position] = new RequestsFragment();
+                return this.main_page_fragment[position];
             default:
                 return null;
         }
@@ -48,12 +52,12 @@ public class $_TabsAccessAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 return "Chats";
-
             case 1:
                 return "Groups";
-
             case 2:
                 return "Contacts";
+            case 3:
+                return "Request's";
             default:
                 return null;
         }

@@ -65,7 +65,6 @@ public class GroupsFragment extends Fragment implements $_InitializationView {
         this.fragment_group_binding.recyclerViewGroup.setAdapter(this.group_adapter);
         this.fragment_group_binding.recyclerViewGroup.setLayoutManager(new LinearLayoutManager(getContext()));
         this.group_adapter.setOnItemClickListener(onItemClickListener);
-
         this.group_view_model.getAllGroups();
     }
 

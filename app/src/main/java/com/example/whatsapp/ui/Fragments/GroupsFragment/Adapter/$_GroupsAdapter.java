@@ -44,6 +44,7 @@ public class $_GroupsAdapter extends RecyclerView.Adapter<$_GroupsAdapter.$_Grou
     }
 
 
+
     class $_GroupViewHolder extends RecyclerView.ViewHolder {
         private AppCompatTextView name;
 

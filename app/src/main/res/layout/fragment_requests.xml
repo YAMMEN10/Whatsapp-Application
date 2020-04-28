@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Fragments.GroupsFragment.GroupsFragment">
+    tools:context=".ui.Fragments.RequestsFragment.RequestsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_group"
+        android:id="@+id/recycler_view_requests"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
-
 
 </RelativeLayout>
