@@ -49,7 +49,7 @@ public class ContactsFragment extends Fragment implements $_InitializationView {
         this.current_user_id = $_FirebaseData.getINSTANCE().getFirebase_user().getUid();
         this.contacts_fragment_view_model = ViewModelProviders.of(this.context).get($_ContactsFragmentViewModel.class);
 
-        this.contacts_adapter = new $_ContactsAdapter(this,this.current_user_id, this.contacts_fragment_view_model);
+        this.contacts_adapter = new $_ContactsAdapter(this.context,this.current_user_id, this.contacts_fragment_view_model);
 
         this.fragment_contacts_binding.recyclerViewContacts.setLayoutManager(new LinearLayoutManager(getContext()));
         this.fragment_contacts_binding.recyclerViewContacts.setAdapter(this.contacts_adapter.getAdapter());

@@ -15,6 +15,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class $_ProfileActivityViewModel extends ViewModel {
     private MutableLiveData<$_UserModel> live_data_user_information;
     private MutableLiveData<Boolean> live_data_send_message_request;
@@ -85,7 +87,7 @@ public class $_ProfileActivityViewModel extends ViewModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot data) {
                 if (data.hasChild(receiver_user_id)) {
-                    String state = data.child(receiver_user_id).child("request_type").getValue(String.class);
+                    String state = ((HashMap)data.child(receiver_user_id).getValue()).get("request_type").toString();
                     live_data_state_message_request.setValue(state);
                 }else{
                     checkUserIsFriend(sender_user_id, receiver_user_id);

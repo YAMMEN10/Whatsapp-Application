@@ -4,6 +4,7 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
+import com.example.whatsapp.model.$_ContactsKey;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,7 +27,10 @@ public class $_FirebaseData {
     private StorageReference user_profile_image_reference;
     private static $_FirebaseData INSTANCE;
 
-    public $_FirebaseData() {
+    public $_FirebaseData() throws Exception {
+        if(INSTANCE != null){
+            throw new Exception("This is singelton class");
+        }
         this.firebase_auth = FirebaseAuth.getInstance();
         this.root_database_reference = FirebaseDatabase.getInstance().getReference();
         this.user_profile_image_reference = FirebaseStorage.getInstance().getReference().child("Profile Images's");
@@ -133,13 +137,16 @@ public class $_FirebaseData {
     }
 
     public Task<Void> sendChatRequest(String sender_user_id, String receiver_user_id) {
-        return this.root_database_reference.child("Messages Requests").child(sender_user_id).child(receiver_user_id).
-                child("request_type").setValue("sent");
+        $_ContactsKey contacts_key = new $_ContactsKey( receiver_user_id,"sent");
+        return this.root_database_reference.child("Messages Requests").child(sender_user_id).child(receiver_user_id)
+                .setValue(contacts_key);
     }
 
     public Task<Void> receiveChatRequest(String receiver_user_id, String sender_user_id) {
+        $_ContactsKey contacts_key = new $_ContactsKey( receiver_user_id,"received");
+
         return this.root_database_reference.child("Messages Requests").child(receiver_user_id).child(sender_user_id).
-                child("request_type").setValue("received");
+                child("request_type").setValue(contacts_key);
     }
 
     public DatabaseReference getMessageChatStateFromSenderToReceiver(String sender_user_id) {
@@ -187,7 +194,11 @@ public class $_FirebaseData {
     // Getter and Setter
     public static $_FirebaseData getINSTANCE() {
         if (INSTANCE == null) {
-            INSTANCE = new $_FirebaseData();
+            try {
+                INSTANCE = new $_FirebaseData();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return INSTANCE;
     }
