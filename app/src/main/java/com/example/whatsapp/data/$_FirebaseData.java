@@ -29,7 +29,7 @@ public class $_FirebaseData {
 
     public $_FirebaseData() throws Exception {
         if(INSTANCE != null){
-            throw new Exception("This is singelton class");
+            throw new Exception("This is singleton class");
         }
         this.firebase_auth = FirebaseAuth.getInstance();
         this.root_database_reference = FirebaseDatabase.getInstance().getReference();
