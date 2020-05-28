@@ -138,40 +138,48 @@ public class $_FirebaseData {
 
     public Task<Void> sendChatRequest(String sender_user_id, String receiver_user_id) {
         $_ContactsKey contacts_key = new $_ContactsKey( receiver_user_id,"sent");
-        return this.root_database_reference.child("Messages Requests").child(sender_user_id).child(receiver_user_id)
+        return this.root_database_reference.child("Send Messages Requests").child(sender_user_id).child(receiver_user_id)
                 .setValue(contacts_key);
     }
 
     public Task<Void> receiveChatRequest(String receiver_user_id, String sender_user_id) {
-        $_ContactsKey contacts_key = new $_ContactsKey( receiver_user_id,"received");
+        $_ContactsKey contacts_key = new $_ContactsKey( sender_user_id,"received");
 
-        return this.root_database_reference.child("Messages Requests").child(receiver_user_id).child(sender_user_id).
-                child("request_type").setValue(contacts_key);
+        return this.root_database_reference.child("Receive Messages Requests").child(receiver_user_id).child(sender_user_id).
+                setValue(contacts_key);
     }
 
     public DatabaseReference getMessageChatStateFromSenderToReceiver(String sender_user_id) {
-        return this.root_database_reference.child("Messages Requests").child(sender_user_id);
+        return this.root_database_reference.child("Send Messages Requests").child(sender_user_id);
     }
 
-    public Task<Void> removeSendChatRequest(String sender_user_id, String receiver_user_id) {
-        return this.root_database_reference.child("Messages Requests").child(sender_user_id).child(receiver_user_id).
+    public DatabaseReference getMessageChatStateFromReceiverToSender(String sender_user_id) {
+        return this.root_database_reference.child("Receive Messages Requests").child(sender_user_id);
+    }
+
+    public Task<Void> removeSendChatRequest(String receiver_user_id, String sender_user_id) {
+        return this.root_database_reference.child("Receive Messages Requests").child(receiver_user_id).child(sender_user_id).
                 removeValue();
     }
 
-    public Task<Void> removeReceiveChatRequest(String receiver_user_id, String sender_user_id) {
-        return this.root_database_reference.child("Messages Requests").child(receiver_user_id).child(sender_user_id).
+    public Task<Void> removeReceiveChatRequest(String sender_user_id, String receiver_user_id) {
+        return this.root_database_reference.child("Send Messages Requests").child(sender_user_id).child(receiver_user_id).
                 removeValue();
     }
 
     public Task<Void> acceptMessageRequestFromSender(String sender_user_id, String receiver_user_id){
+        $_ContactsKey contacts_key = new $_ContactsKey( receiver_user_id,"friend");
+
         return this.root_database_reference.child("Contacts").child(sender_user_id).child(receiver_user_id)
-                .child("key").setValue(receiver_user_id);
+                .setValue(contacts_key);
     }
 
 
     public Task<Void> acceptMessageRequestFromReceiver(String receiver_user_id, String sender_user_id){
+        $_ContactsKey contacts_key = new $_ContactsKey( sender_user_id,"friend");
+
         return this.root_database_reference.child("Contacts").child(receiver_user_id).child(sender_user_id)
-                .child("key").setValue(sender_user_id);
+                .setValue(contacts_key);
     }
 
     public Task<Void> removeFriendFromSender(String sender_user_id, String receiver_user_id){

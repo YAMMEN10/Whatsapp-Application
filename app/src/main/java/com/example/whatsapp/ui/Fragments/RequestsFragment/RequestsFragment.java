@@ -42,6 +42,7 @@ public class RequestsFragment extends Fragment implements $_InitializationView {
     @Override
     public void initializationView() {
         this.context = this;
+        $_FirebaseData.getINSTANCE().setFirebase_user($_FirebaseData.getINSTANCE().getFirebase_auth().getCurrentUser());
         this.current_user_id = $_FirebaseData.getINSTANCE().getFirebase_auth().getCurrentUser().getUid();
         this.request_view_model = ViewModelProviders.of(this.context).get($_RequestViewModel.class);
         this.request_adapter = new $_RequestAdapter(this.context, this.current_user_id,this.request_view_model);

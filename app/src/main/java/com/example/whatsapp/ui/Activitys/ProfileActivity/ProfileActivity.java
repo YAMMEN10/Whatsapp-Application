@@ -206,11 +206,11 @@ public class ProfileActivity extends AppCompatActivity implements $_Initializati
                         this.profile_activity_view_model.sendChatRequest(this.sender_user_id, this.receiver_user_id);
                     }else if (current_state.equals("sent")){
                         this.progress_dialog_remove_message_request.show();
-                        this.profile_activity_view_model.removeSendChatRequest(this.sender_user_id, this.receiver_user_id);
+                        this.profile_activity_view_model.removeSendChatRequest(this.receiver_user_id, this.sender_user_id);
                     }else if (current_state.equals("received")){
                         this.progress_dialog_remove_message_request = $_Utils.makeProgressDialog(context, "Accept Message Request","Please wait, while accepting message request for you...");
                         this.progress_dialog_remove_message_request.show();
-                        this.profile_activity_view_model.acceptMessageRequestFromSender(sender_user_id, receiver_user_id);
+                        this.profile_activity_view_model.acceptMessageRequestFromSender(receiver_user_id, sender_user_id);
                     }else if (current_state.equals("friend")){
                         this.progress_dialog_remove_friend.show();
                         this.profile_activity_view_model.removeFriendFromSender(sender_user_id, receiver_user_id);
