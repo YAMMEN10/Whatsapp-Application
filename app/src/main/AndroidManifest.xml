@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Activitys.ProfileActivity.ProfileActivity" android:parentActivityName=".ui.Activitys.FindFriendActivity.FindFriendActivity"></activity>
+        <activity android:name=".ui.Activitys.PrivateChatActivity"></activity>
+        <activity
+            android:name=".ui.Activitys.ProfileActivity.ProfileActivity"
+            android:parentActivityName=".ui.Activitys.FindFriendActivity.FindFriendActivity" />
         <activity android:name=".ui.Activitys.VerificationCodeActivity.VerificationCodeActivity" />
         <activity
             android:name=".ui.Activitys.FindFriendActivity.FindFriendActivity"
